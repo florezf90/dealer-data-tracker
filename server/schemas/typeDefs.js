@@ -9,11 +9,15 @@ type User {
 }
 type Auth {
     token: ID!
-    profile: Profile
+    user: User
 }
 type Query {
-    profile(profileId: ID!): Profile
-    me: Profile
+    profile(profileId: ID!): User
+    me: User
+}
+type Mutation {
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
 }
 `;
 module.exports = typeDefs;
