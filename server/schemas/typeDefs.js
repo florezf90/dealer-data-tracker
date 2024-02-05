@@ -5,7 +5,7 @@ type User {
     lastName: String
     email: String
     password: String
-    employees: [employee]
+    employees: [ Employee ]
 }
 type Auth {
     token: ID!
@@ -15,14 +15,14 @@ type Employee{
     firstName: String
     lastName: String
     email: String
-    reports: [report]
+    reports: [ Report ]
 }
 type Report {
     employeeId: Int
-    handsDealt: String
-    promotionTaken: String
-    moneyTaken: String
-    date: Date
+    handsDealt: Int
+    promotionTaken: Int
+    moneyTaken: Int
+    date: String
 }
 type Query {
     profile(profileId: ID!): User
@@ -31,6 +31,8 @@ type Query {
 type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    Employees:[Employee]
+    Reports:[Report]
 }
 `;
 module.exports = typeDefs;

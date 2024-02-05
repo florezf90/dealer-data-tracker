@@ -2,23 +2,23 @@ const { Schema, model } = require('mongoose');
 
 const reportSchema = new Schema({
     employeeId:{
-        type:Int,
+        type:Number,
         required:true
     },
     handsDealt: {
-        type:Int,
+        type:Number,
         required:true
     },
     promotionTaken: {
-        type:Float,
+        type:Number,
         required:true
     },
     moneyTaken: {
-        type:Float, 
+        type:Number, 
         required:true
     },
     date: {
-        type: Date,
+        type: String,
         default: Date.now
     }
     //TODO check on date format

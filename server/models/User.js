@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const employeeSchema = require('./Employee')
+const {employeeSchema} = require('./Employee');
 
 const userSchema = new Schema({
   firstName: {
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
-  employees: [ employeeSchema ] //TODO check that this arra is set up correct
+  employees: [ String ] //TODO check that this arra is set up correct
 });
 
 // set up pre-save middleware to create password
