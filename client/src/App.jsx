@@ -9,10 +9,10 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev">
+        <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev">
+        <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -28,16 +28,6 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <input type="text" placeholder='email' id='email'/>
-      <input type="text" placeholder='password' id='password'/>
-      <button id='loginBtn'>login</button>
-
-
-      <input type="text" placeholder='firstName' id='newFirstName'/>
-      <input type="text" placeholder='lastName' id='newLastName'/>
-      <input type="text" placeholder='email' id='newEmail'/>
-      <input type="text" placeholder='password' id='newPassword'/>
-      <button id='signUpBtn'>sign up</button>
     </>
   )
 }

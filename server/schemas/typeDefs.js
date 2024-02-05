@@ -5,11 +5,24 @@ type User {
     lastName: String
     email: String
     password: String
-    employees: [Employee]
+    employees: [employee]
 }
 type Auth {
     token: ID!
     user: User
+}
+type Employee{
+    firstName: String
+    lastName: String
+    email: String
+    reports: [report]
+}
+type Report {
+    employeeId: Int
+    handsDealt: String
+    promotionTaken: String
+    moneyTaken: String
+    date: Date
 }
 type Query {
     profile(profileId: ID!): User

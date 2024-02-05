@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const employeeSchema = require('./Employee')
 
 const userSchema = new Schema({
   firstName: {
@@ -27,7 +28,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
-  employees: [ Employee ] //TODO check that this arra is set up correct
+  employees: [ employeeSchema ] //TODO check that this arra is set up correct
 });
 
 // set up pre-save middleware to create password
@@ -45,6 +46,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Profile = model('User', userSchema);
+const User = model('User', userSchema);
 
-module.exports = Profile;
+module.exports = User;
