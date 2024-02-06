@@ -16,6 +16,12 @@ const EmployeeSchema = new Schema ({
       required: true,
       trim: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
+    },
     createdAt: {
       type: Date,
       default: Date.now,
