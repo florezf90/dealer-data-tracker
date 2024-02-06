@@ -1,3 +1,4 @@
 const Employee = require('./Employee')
-
-module.export ={Employee}
+const User = require('./User');
+const Report = require('./Report')
+module.export ={Employee, User, Report}
