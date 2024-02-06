@@ -3,8 +3,8 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        profile: async (parent, { profileId }) => {
-            return User.findOne({ _id: profileId });
+        user: async (parent, { email }) => {
+            return User.findOne({ email: email });
         },
         //uses context of JWT to get info
         me: async (parent, args, context) => {

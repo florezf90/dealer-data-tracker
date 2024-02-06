@@ -25,7 +25,7 @@ type Report {
     date: String
 }
 type Query {
-    profile(profileId: ID!): User
+    user(email: String!): User
     me: User
 }
 type Mutation {
