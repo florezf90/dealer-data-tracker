@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const EmployeeSchema = require('./Employee');
+const DealerSchema = require('./Dealer');
 
 const SupervisorSchema = new Schema({
     id: {
@@ -16,7 +16,7 @@ const SupervisorSchema = new Schema({
         required: true,
         trim: true,
     },
-    employees: [EmployeeSchema]
+    dealers: [DealerSchema]
 });
 
 const Supervisor = model('Supervisor', SupervisorSchema);
