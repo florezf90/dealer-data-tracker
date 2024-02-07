@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Dealer = require('../models/Dealer');
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -57,7 +58,21 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-  },
+
+    addDealer: async (_, { firstName, lastName, email }) => {
+      try {
+        const newDealer = await Dealer.create({
+          firstName,
+          lastName,
+          email,
+        });
+        return newDealer;
+      } catch (error) {
+        console.error('Error adding dealer:', error);
+        throw new Error('Unable to add dealer');
+      }
+    },
+  }
 };
 
 module.exports = resolvers;
