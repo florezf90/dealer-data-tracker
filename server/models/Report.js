@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const reportSchema = new Schema({
     employeeId:{
@@ -17,11 +18,12 @@ const reportSchema = new Schema({
         type:Number, 
         required:true
     },
-    date: {
-        type: String,
-        default: Date.now
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp)
+    //TODO check on date format-- done
     }
-    //TODO check on date format
 });
 
 const Report = model('Report', reportSchema);
