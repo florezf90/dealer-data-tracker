@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const EmployeeSchema = new Schema ({
+const DealerSchema = new Schema ({
     id: {
       type: Number,
       required: true,
@@ -29,6 +29,6 @@ const EmployeeSchema = new Schema ({
     },
   });
 
-  const Employee = model('Employee', EmployeeSchema);
+  const Dealer = model('Dealer', DealerSchema);
 
-  module.exports = Employee;
+  module.exports = Dealer;

@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const reportSchema = new Schema({
-    employeeId:{
+    dealerId:{
         type:Number,
         required:true
     },
