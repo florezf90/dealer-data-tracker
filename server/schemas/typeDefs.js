@@ -12,9 +12,11 @@ user: User
 }
 
 type Dealer {
+_id: ID
 firstName: String
 lastName: String
 email: String
+createdAt: String
 reports: [Report]
 }
 

@@ -66,6 +66,7 @@ const resolvers = {
           lastName,
           email,
         });
+        console.log(newDealer);
         return newDealer;
       } catch (error) {
         console.error('Error adding dealer:', error);
