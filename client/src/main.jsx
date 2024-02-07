@@ -3,12 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
 import './index.css'
 
 import App from './App.jsx'
-// import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import Dashboard from './pages/Dashboard.jsx';
+import DealerForm from './pages/DealerForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
       }, {
         path: '/dashboard',
         element: <Dashboard />
+      }
+      , {
+        path: '/add-dealer',
+        element: <DealerForm />
       }
     ]
   }
