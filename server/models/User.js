@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-//const {DealerSchema} = require('./Dealer');
+const Dealer = require('./Dealer');
 
 const userSchema = new Schema({
   firstName: {
@@ -28,6 +28,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
+  dealers: [{ type: Schema.Types.ObjectId, ref: 'Dealer'}],
 
 });
 

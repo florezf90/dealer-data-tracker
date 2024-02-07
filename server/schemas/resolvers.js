@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Dealer = require('../models/Dealer');
 const { signToken, AuthenticationError } = require("../utils/auth");
+const { v4: uuidv4 } = require('uuid');
 
 const resolvers = {
   Query: {
