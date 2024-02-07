@@ -10,14 +10,14 @@ type Auth {
     token: ID!
     user: User
 }
-type Employee{
+type Dealer{
     firstName: String
     lastName: String
     email: String
     reports: [ Report ]
 }
 type Report {
-    employeeId: Int
+    Dealer: Int
     handsDealt: Int
     promotionTaken: Int
     moneyTaken: Int
@@ -30,8 +30,7 @@ type Query {
 type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    Employees:[Employee]
-    Reports:[Report]
+    addDealer(profileId: ID!, skill: String!): Profile
 }
 `;
 module.exports = typeDefs;
