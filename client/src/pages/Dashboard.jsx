@@ -1,20 +1,44 @@
-import  { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GET_DEALERS } from '../utils/queries'; // Import the GraphQL query
 import { useQuery } from '@apollo/client';
-import { GET_DEALER_PERFORMANCE } from '../utils/queries';
+
 
 const Dashboard = () => {
   // State to store dealer performance data
 
+  // Define the GraphQL query to fetch dealers
+  const { data } = useQuery(GET_DEALERS);
+
+
+// Check if data is undefined or dealers array is empty
+if (!data || !data.dealers || data.dealers.length === 0) {
   return (
     <div className="dashboard">
       <h2>Dealer Performance Dashboard</h2>
-      <div className="dealer-performance-list">
-        <p>your mom </p>
-      </div>
-      <Link to="/add-performance">Add Dealer Performance</Link> {/* Link to a form to add dealer performance */}
+      <p>No dealers available</p>
+      <Link to="/add-dealer">
+        <button>Add Dealer</button>
+      </Link>
     </div>
   );
-};
+}
 
+return (
+  <div className="dashboard">
+    <h2>Dealer Performance Dashboard</h2>
+    <div className="dealer-performance-list">
+      <ul>
+        {data.dealers.map(dealer => (
+          <li key={dealer.id}>
+            {dealer.firstName} {dealer.lastName}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <Link to="/add-dealer">
+      <button>Add Dealer</button>
+    </Link>
+  </div>
+);
+};
 export default Dashboard;

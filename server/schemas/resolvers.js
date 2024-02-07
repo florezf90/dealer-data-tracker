@@ -50,7 +50,19 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
+
+    Query: {
+      dealers: async () => {
+        try {
+          const dealers = await Dealer.find();
+          return dealers;
+        } catch (err) {
+          throw new Error('Failed to fetch dealers');
+        }
+      }
+    },
   },
 };
+
 
 module.exports = resolvers;
