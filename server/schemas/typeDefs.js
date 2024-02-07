@@ -1,36 +1,42 @@
 const typeDefs = `
 type User {
-    _id: ID
-    firstName: String
-    lastName: String
-    email: String
+_id: ID
+firstName: String
+lastName: String
+email: String
+}
 
-}
 type Auth {
-    token: ID!
-    user: User
+token: ID!
+user: User
 }
-type Dealer{
-    firstName: String
-    lastName: String
-    email: String
-    reports: [ Report ]
+
+type Dealer {
+firstName: String
+lastName: String
+email: String
+reports: [Report]
 }
+
 type Report {
-    Dealer: Int
-    handsDealt: Int
-    promotionTaken: Int
-    moneyTaken: Int
-    date: String
+dealerId: Int
+handsDealt: Int
+promotionTaken: Int
+moneyTaken: Int
+date: String
 }
+
 type Query {
-    user(email: String!): User
-    me: User
+user(email: String!): User
+me: User
+dealers: [Dealer]   # Add this line to define the dealers query
 }
+
 type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addDealer(supervisorId: ID!, firstName: String!, lastName: String!, email: String!): Dealer
+addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+login(email: String!, password: String!): Auth
+addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
+# Add other mutation fields here
 }
 `;
 module.exports = typeDefs;

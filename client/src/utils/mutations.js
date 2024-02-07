@@ -34,19 +34,13 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-
 export const ADD_DEALER = gql`
-  mutation addDealer(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-  ) {
-    addDealer(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-    ) {
-      Dealer
-    }
+mutation AddDealer($firstName: String!, $lastName: String!, $email: String!) {
+  addDealer(firstName: $firstName, lastName: $lastName, email: $email) {
+    id
+    firstName
+    lastName
+    email
   }
+}
 `;
