@@ -27,24 +27,24 @@ const resolvers = {
           throw new Error('Error creating user');
         }
       },
-    }//mutation end placeholder
+    //mutation end placeholder
     
-//     login: async (parent, { email, password }) => {
-//       const profile = await User.findOne({ email });
+  login: async (parent, { email, password }) => {
+      const profile = await User.findOne({ email });
 
-//       if (!profile) {
-//         throw AuthenticationError;
-//       }
+      if (!profile) {
+  throw AuthenticationError;
+}
 
-//       const correctPw = await profile.isCorrectPassword(password);
+const correctPw = await profile.isCorrectPassword(password);
 
-//       if (!correctPw) {
-//         throw AuthenticationError;
-//       }
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
 
-//       const token = signToken(profile);
-//       return { token, profile };
-//      }
+      const token = signToken(profile);
+      return { token, profile };
+      },}
 
 };
 
