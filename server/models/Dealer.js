@@ -2,8 +2,8 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const DealerSchema = new Schema ({
-    id: {
-      type: Number,
+    supervisorId: {
+      type: ID,
       required: true,
     },
     firstName: {

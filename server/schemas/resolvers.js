@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Dealer = require("../models/Dealer");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -32,7 +33,6 @@ const resolvers = {
         throw new Error("Error creating user");
       }
     },
-    //mutation end placeholder
 
     login: async (parent, { email, password }) => {
       const profile = await User.findOne({ email });
@@ -49,6 +49,23 @@ const resolvers = {
 
       const token = signToken(profile);
       return { token, profile };
+    },
+
+    addDealer: async (parent, { firstName, lastName, email }, context) => {
+      if(context.user)
+      try {
+        const dealer = await Dealer.create({
+          firstName,
+          lastName,
+          email,
+          supervisorId: context.user._id,
+        });
+        console.log(dealer);
+        return { dealer };
+      } catch (err) {
+        console.error(err);
+        throw new Error("Error creating dealer");
+      }
     },
   },
 };

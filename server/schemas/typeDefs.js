@@ -30,7 +30,7 @@ type Query {
 type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addDealer(profileId: ID!, skill: String!): Profile
+    addDealer(supervisorId: ID!, firstName: String!, lastName: String!, email: String!): Dealer
 }
 `;
 module.exports = typeDefs;
