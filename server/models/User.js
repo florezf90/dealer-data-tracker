@@ -1,24 +1,24 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const {employeeSchema} = require('./Employee');
+//const {employeeSchema} = require('./Employee');
 
 const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   lastName: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
-  employees: [ String ] //TODO check that this arra is set up correct
+
 });
 
 // set up pre-save middleware to create password

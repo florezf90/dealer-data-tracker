@@ -4,8 +4,7 @@ type User {
     firstName: String
     lastName: String
     email: String
-    password: String
-    employees: [ Employee ]
+
 }
 type Auth {
     token: ID!

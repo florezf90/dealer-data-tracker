@@ -1,5 +1,6 @@
+
 {
-  "name": "tech-friends",
+  "name": "dealer-data-tracker",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
