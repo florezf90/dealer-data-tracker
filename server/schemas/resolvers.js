@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Dealer = require('../models/Dealer');
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -13,6 +14,14 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    dealers: async () => {
+      try {
+        const dealers = await Dealer.find();
+        return dealers;
+      } catch (err) {
+        throw new Error('Failed to fetch dealers');
+      }
+    }
   },
 
   Mutation: {
@@ -32,7 +41,6 @@ const resolvers = {
         throw new Error("Error creating user");
       }
     },
-    //mutation end placeholder
 
     login: async (parent, { email, password }) => {
       const profile = await User.findOne({ email });
@@ -50,7 +58,21 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-  },
+
+    addDealer: async (_, { firstName, lastName, email }) => {
+      try {
+        const newDealer = await Dealer.create({
+          firstName,
+          lastName,
+          email,
+        });
+        return newDealer;
+      } catch (error) {
+        console.error('Error adding dealer:', error);
+        throw new Error('Unable to add dealer');
+      }
+    },
+  }
 };
 
 module.exports = resolvers;
