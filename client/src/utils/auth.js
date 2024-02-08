@@ -40,6 +40,18 @@ class AuthService {
     // this will reload the page and reset the state of the application
     window.location.assign('/');
   }
+
+  getUserIdFromToken() {
+    const token = this.getToken();
+    if (token) {
+      const decoded = decode(token);
+      const id = decoded.data.email;
+          console.log("Decoded token:", id);
+      return id;
+    } else {
+      return null;
+    }
+  }
 }
 
 export default new AuthService();

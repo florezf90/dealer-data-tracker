@@ -1,13 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const GET_DEALERS = gql`
-  query {
-    dealers {
-      _id
-      firstName
-      lastName
-      email
-      createdAt
+  query GetDealers($email: String!) {
+    user(email: $email) {
+      employees {
+        _id
+        firstName
+        lastName
+        email
+        createdAt
+      }
     }
   }
   `
