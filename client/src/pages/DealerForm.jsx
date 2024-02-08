@@ -7,7 +7,7 @@ import  AuthService  from '../utils/auth';
 
 function DealerForm() {
   const [formState, setFormState] = useState({ email: '', firstName: '', lastName: '' });
-  const [addUser] = useMutation(ADD_DEALER);
+  const [addDealer] = useMutation(ADD_DEALER);
   const isAuthenticated = AuthService.loggedIn();
 
   if (!isAuthenticated) {
@@ -17,7 +17,7 @@ function DealerForm() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const data = await addUser({
+    const data = await addDealer({
       variables: {
         email: formState.email,
         firstName: formState.firstName,

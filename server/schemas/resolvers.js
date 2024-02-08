@@ -59,14 +59,19 @@ const resolvers = {
       return { token, profile };
     },
 
-    addDealer: async (_, { firstName, lastName, email }) => {
-      try {
-        const newDealer = await Dealer.create({
-          user: userId,  // Associate the dealer with the specified user
-          firstName,
-          lastName,
-          email,
-        });
+
+    addDealer: async (_, { firstName, lastName, email }, context) => {
+        if (!context.user) {
+          throw new Error('User not authenticated');
+        }
+      
+        try {
+          const newDealer = await Dealer.create({
+            firstName,
+            lastName,
+            email,
+            createdBy: context.user._id, // Set createdBy to the ID of the authenticated user
+          });
         console.log(newDealer);
         return newDealer;
       } catch (error) {

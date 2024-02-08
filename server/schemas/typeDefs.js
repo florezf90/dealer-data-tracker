@@ -34,14 +34,13 @@ date: String
 type Query {
 user(email: String!): User
 me: User
-dealers: [Dealer]   # Add this line to define the dealers query
+dealers: [Dealer]  
 }
 
 type Mutation {
-addUser(userId: ID!,firstName: String!, lastName: String!, email: String!, password: String!): Auth
+addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 login(email: String!, password: String!): Auth
-addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
-# Add other mutation fields here
+addDealer(userId: ID!firstName: String!, lastName: String!, email: String!): Dealer!
 }
 `;
 module.exports = typeDefs;
