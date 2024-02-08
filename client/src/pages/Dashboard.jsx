@@ -44,6 +44,8 @@ return (
              {dealer.lastName } {
              dealer.email + "   "} 
              {dealer.createdAt}
+             {/* <Link to="/report-history"><button>view Reports</button></Link> */}
+             <Link to="/add-report"><button>New Report</button></Link>
           </li>
         ))}
       </ul>
