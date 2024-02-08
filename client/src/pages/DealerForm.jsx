@@ -2,10 +2,18 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_DEALER } from '../utils/mutations';
+import  AuthService  from '../utils/auth';
+
 
 function DealerForm() {
   const [formState, setFormState] = useState({ email: '', firstName: '', lastName: '' });
   const [addUser] = useMutation(ADD_DEALER);
+  const isAuthenticated = AuthService.loggedIn();
+
+  if (!isAuthenticated) {
+    window.location.assign('/login');
+    
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +25,11 @@ function DealerForm() {
       },
     });
     console.log(data);
+    setFormState({
+      email: '',
+      firstName: '',
+      lastName: '',
+    } [data]);
   };
 
   const handleChange = (event) => {
@@ -30,6 +43,10 @@ function DealerForm() {
   return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>
+
+        <button>
+        <Link to="/dashboard"> go back</Link>
+      </button>
 
       <h2>add dealer</h2>
       <form onSubmit={handleFormSubmit}>
