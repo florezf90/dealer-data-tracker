@@ -62,6 +62,7 @@ const resolvers = {
     addDealer: async (_, { firstName, lastName, email }) => {
       try {
         const newDealer = await Dealer.create({
+          user: userId,  // Associate the dealer with the specified user
           firstName,
           lastName,
           email,

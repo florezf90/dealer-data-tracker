@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const DealerSchema = new Schema ({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
     firstName: {
       type: String,
       required: true,
