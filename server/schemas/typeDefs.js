@@ -4,6 +4,7 @@ _id: ID
 firstName: String
 lastName: String
 email: String
+employees: [Dealer]
 }
 
 type Auth {
