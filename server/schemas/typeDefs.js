@@ -25,7 +25,6 @@ dealerId: Int
 handsDealt: Int
 promotionTaken: Int
 moneyTaken: Int
-date: String
 }
 
 type Query {
@@ -38,6 +37,7 @@ type Mutation {
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 login(email: String!, password: String!): Auth
 addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
+addReport( dealerId: Int!, handsDelt: Int!, promotionTaken: Int!, moneyTaken: Int! ):Report
 # Add other mutation fields here
 }
 `;

@@ -43,3 +43,14 @@ mutation AddDealer($firstName: String!, $lastName: String!, $email: String!) {
   }
 }
 `;//TODO add way to tie to user (id or email or something)
+
+export const ADD_REPORT = gql`
+mutation addReport($dealerId: String!, $handsDelt: Int!, $promotionTaken: Int!, $moneyTaken: Int!) {
+  addReport(dealerId: $dealerId, handsDelt: $handsDelt, promotionTaken: $promotionTaken, moneyTaken: $moneyTaken) {
+    dealerId
+    handsDelt
+    promotionTaken
+    moneyTaken
+  }
+}
+`

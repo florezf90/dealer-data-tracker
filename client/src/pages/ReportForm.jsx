@@ -1,26 +1,31 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-// import { ADD_REPORT } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_REPORT } from '../utils/mutations';
 import  AuthService  from '../utils/auth';
+import { useParams } from 'react-router-dom';
+
+
 
 
 function ReportForm() {
-  const [formState, setFormState] = useState({ dealerId:'', handsDelt: '', promotionTaken: '', moneyTaken: '' });
-  // const [addReport] = useMutation(ADD_REPORT);
-  function addReport(x){console.log(`${x}`)}
+  const {dealerId} = useParams();
+  const [formState, setFormState] = useState({ handsDelt: '', promotionTaken: '', moneyTaken: '' });
+  const [addReport] = useMutation(ADD_REPORT);
   const isAuthenticated = AuthService.loggedIn();
 
+
   if (!isAuthenticated) {
-    window.location.assign('/add-report');
+    window.location.assign('/login');
     
   }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(`dealerId ${dealerId} handsDelt ${formState.handsDelt} promotionTaken ${formState.promotionTaken} moneyTaken ${formState.moneyTaken}`)
     const data = await addReport({
       variables: {
-        dealerId: formState.dealerId,
+        dealerId: dealerId,
         handsDelt: formState.handsDelt,
         promotionTaken: formState.promotionTaken,
         moneyTaken: formState.moneyTaken,
@@ -51,15 +56,16 @@ function ReportForm() {
         <Link to="/dashboard"> go back</Link>
       </button>
 
-      <h2>add dealer</h2>
+      <h2>Dealer Report</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="dealerId">dealerId:</label>
           <input
-            placeholder="dealerId"
+            value={dealerId}
             name="dealerId"
             type="dealerId"
             id="dealerId"
+            disabled
             onChange={handleChange}
           />
         </div>

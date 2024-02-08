@@ -39,13 +39,13 @@ return (
     <div className="dealer-performance-list">
       <ul>
         {data.dealers.map(dealer => (
-          <li key={dealer.id}>
+          <li key={dealer._id}>
             {dealer.firstName + "   "}
              {dealer.lastName } {
              dealer.email + "   "} 
              {dealer.createdAt}
              {/* <Link to="/report-history"><button>view Reports</button></Link> */}
-             <Link to="/add-report"><button>New Report</button></Link>
+             <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
           </li>
         ))}
       </ul>
