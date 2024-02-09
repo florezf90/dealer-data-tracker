@@ -23,6 +23,7 @@ const DealerSchema = new Schema ({
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp)
     },
+    reports: [{ type: Schema.Types.ObjectId, ref: 'Report' }]
   });
 
   const Dealer = model('Dealer', DealerSchema);
