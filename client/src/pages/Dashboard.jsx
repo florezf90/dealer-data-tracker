@@ -33,30 +33,36 @@ if (!data || !data.dealers || data.dealers.length === 0) {
   );
 }
 
+    if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+
 return (
-  <div className="dashboard">
-    <h2>Dealer Performance Dashboard</h2>
-    <div className="dealer-performance-list">
-      <ul>
-        {data.dealers.map(dealer => (
-          <li key={dealer.id}>
-            {dealer.firstName + "   "}
-             {dealer.lastName } {
-             dealer.email + "   "} 
-             {dealer.createdAt}
-          </li>
-        ))}
-      </ul>
+<div className="dashboard">
+      <h2>Dealer Performance Dashboard</h2>
+      <div className="dealer-performance-list">
+        <ul>
+          {data.user.employees.map(dealer => (
+            <li key={dealer._id}>
+              {dealer.firstName + " "}
+              {dealer.lastName + " "}
+              {dealer.email + " "}
+              {dealer.createdAt + " "}
+              <button onClick={() => handleDelete(dealer._id)}> delete </button>
+              {/* <Link to="/report-history"><button>view Reports</button></Link> */}
+              <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Link to="/add-dealer">
+        <button>Add Dealer</button>
+      </Link>
+      {Auth.loggedIn() && (
+        <button className="btn btn-lg btn-light m-2" onClick={logout}>
+          Logout
+        </button>
+      )}
     </div>
-    <Link to="/add-dealer">
-      <button>Add Dealer</button>
-    </Link>
-              {Auth.loggedIn() && (
-            <button className="btn btn-lg btn-light m-2" onClick={logout}>
-              Logout
-            </button>
-          )}
-  </div>
 );
 };
 export default Dashboard;

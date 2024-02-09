@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Dealer = require('../models/Dealer');
+const Report = require("../models/Report");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -86,7 +87,25 @@ const resolvers = {
       } else {
         throw AuthenticationError;
       }
-    }
+    },
+
+    addReport: async (_, { dealerId, handsDelt, promotionTaken, moneyTaken }) => {
+      try {
+        console.log(0);
+        const newReport = await Report.create({
+          dealerId,
+          handsDelt,
+          promotionTaken,
+          moneyTaken,
+        });
+        console.log(newReport);
+        console.log(1);
+        return newReport;
+      } catch (error) {
+        console.error('Error adding report:', error);
+        throw new Error('Unable to add report');
+      }
+    },
   },
 };
 

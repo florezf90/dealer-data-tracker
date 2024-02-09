@@ -22,7 +22,6 @@ const reportSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
-    //TODO check on date format-- done
     }
 });
 
