@@ -30,6 +30,7 @@ function DealerForm() {
       firstName: '',
       lastName: '',
     } [data]);
+    window.location.assign('/dashboard');    
   };
 
   const handleChange = (event) => {

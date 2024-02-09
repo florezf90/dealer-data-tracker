@@ -38,6 +38,7 @@ function ReportForm() {
       promotionTaken: '',
       moneyTaken: '',
     } [data]);
+    window.location.assign('/dashboard');    
   };
 
   const handleChange = (event) => {

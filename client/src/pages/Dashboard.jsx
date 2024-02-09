@@ -38,7 +38,7 @@ if (!data || !data.user || !data.user.employees || data.user.employees.length ==
 }
 
     if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :</p>;
 
 return (
 <div className="dashboard">
@@ -51,6 +51,8 @@ return (
               {dealer.lastName + " "}
               {dealer.email + " "}
               {dealer.createdAt}
+              {/* <Link to="/report-history"><button>view Reports</button></Link> */}
+              <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
             </li>
           ))}
         </ul>
