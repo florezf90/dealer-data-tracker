@@ -30,7 +30,11 @@ function DealerForm() {
       firstName: '',
       lastName: '',
     } [data]);
+<<<<<<< HEAD
     window.location.assign('/dashboard');    
+=======
+    window.location.assign('/dashboard');
+>>>>>>> feature/dashboardState
   };
 
   const handleChange = (event) => {
