@@ -10,11 +10,10 @@ import { useParams } from 'react-router-dom';
 
 const ReportHistory = () => {
   const {dealerId}= useParams();
-  //State to store dealer performance data
-
   const { loading, error, data } = useQuery(GET_DEALER_REPORT, {
     variables: { email: AuthService.getUserIdFromToken() }
   });
+  console.log('query data: ' +data);
 
     const logout = (event) => {
     event.preventDefault();
