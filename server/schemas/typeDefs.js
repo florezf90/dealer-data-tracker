@@ -22,11 +22,10 @@ reports: [Report]
 }
 
 type Report {
-dealerId: Int
+dealerId: String
 handsDealt: Int
 promotionTaken: Int
 moneyTaken: Int
-date: String
 }
 
 type Query {
@@ -40,6 +39,7 @@ addUser(firstName: String!, lastName: String!, email: String!, password: String!
 login(email: String!, password: String!): Auth
 addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
 removeDealer(_id: ID!): Dealer
+addReport( dealerId: String!, handsDelt: Int!, promotionTaken: Int!, moneyTaken: Int! ):Report
 # Add other mutation fields here
 }
 `;

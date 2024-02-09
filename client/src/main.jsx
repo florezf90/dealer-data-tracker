@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import Dashboard from './pages/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
+import ReportForm from './pages/ReportForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
       , {
         path: '/add-dealer',
         element: <DealerForm />
+      }, {
+        path: '/add-report/:dealerId',
+        element: <ReportForm />
       }
     ]
   }
