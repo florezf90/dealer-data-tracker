@@ -3,10 +3,10 @@ const dateFormat = require('../utils/dateFormat');
 
 const reportSchema = new Schema({
     dealerId:{
-        type:Number,
+        type:String,
         required:true
     },
-    handsDealt: {
+    handsDelt: {
         type:Number,
         required:true
     },
