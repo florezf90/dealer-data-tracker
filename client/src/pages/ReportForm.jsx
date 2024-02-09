@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 function ReportForm() {
   const {dealerId} = useParams();
-  const [formState, setFormState] = useState({ handsDelt: '', promotionTaken: '', moneyTaken: '' });
+  const [formState, setFormState] = useState({ handsDealt: '', promotionTaken: '', moneyTaken: '' });
   const [addReport] = useMutation(ADD_REPORT);
   const isAuthenticated = AuthService.loggedIn();
 
@@ -22,19 +22,19 @@ function ReportForm() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(`dealerId ${dealerId} handsDelt ${formState.handsDelt} promotionTaken ${formState.promotionTaken} moneyTaken ${formState.moneyTaken}`)
+    console.log(`dealerId ${dealerId} handsDealt ${formState.handsDealt} promotionTaken ${formState.promotionTaken} moneyTaken ${formState.moneyTaken}`)
     const data = await addReport({
       variables: {
         dealerId: dealerId,
-        handsDelt: formState.handsDelt,
-        promotionTaken: formState.promotionTaken,
-        moneyTaken: formState.moneyTaken,
+        handsDealt: Number(formState.handsDealt),//
+        promotionTaken: Number(formState.promotionTaken),//
+        moneyTaken: Number(formState.moneyTaken),//
       },
     });
-    console.log(data);
+    console.log('data:'+data);
     setFormState({
       dealerId: '',
-      handsDelt: '',
+      handsDealt: '',
       promotionTaken: '',
       moneyTaken: '',
     } [data]);
@@ -71,12 +71,12 @@ function ReportForm() {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="handsDelt">Hands Delt:</label>
+          <label htmlFor="handsDealt">Hands Dealt:</label>
           <input
-            placeholder="handsDelt"
-            name="handsDelt"
-            type="handsDelt"
-            id="handsDelt"
+            placeholder="handsDealt"
+            name="handsDealt"
+            type="handsDealt"
+            id="handsDealt"
             onChange={handleChange}
           />
         </div>

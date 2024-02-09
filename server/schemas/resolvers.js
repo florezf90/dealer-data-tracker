@@ -89,12 +89,12 @@ const resolvers = {
       }
     },
 
-    addReport: async (_, { dealerId, handsDelt, promotionTaken, moneyTaken }) => {
+    addReport: async (_, { dealerId, handsDealt, promotionTaken, moneyTaken }) => {
       try {
         console.log(0);
         const newReport = await Report.create({
           dealerId,
-          handsDelt,
+          handsDealt,
           promotionTaken,
           moneyTaken,
         });
