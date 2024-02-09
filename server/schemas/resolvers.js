@@ -79,6 +79,14 @@ const resolvers = {
         throw new Error("Unable to add dealer");
       }
     },
+
+    removeDealer: async (parent, { _id }, context) => {
+      if (context.user) {
+        return await Dealer.findOneAndDelete({ _id });
+      } else {
+        throw AuthenticationError;
+      }
+    }
   },
 };
 
