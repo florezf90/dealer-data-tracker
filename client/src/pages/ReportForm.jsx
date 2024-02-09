@@ -26,9 +26,9 @@ function ReportForm() {
     const data = await addReport({
       variables: {
         dealerId: dealerId,
-        handsDelt: formState.handsDelt,
-        promotionTaken: formState.promotionTaken,
-        moneyTaken: formState.moneyTaken,
+        handsDelt: Number (formState.handsDelt),
+        promotionTaken: Number (formState.promotionTaken),
+        moneyTaken: Number(formState.moneyTaken),
       },
     });
     console.log(data);
