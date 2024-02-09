@@ -15,14 +15,16 @@ export const GET_DEALERS = gql`
   `
 export const GET_DEALER = gql`
   query GetDealer($_id: ID!) {
-    dealer(_id: $_id){
+    dealer(_id: $_id) {
       firstName
       lastName
       reports {
+        _id
         dealerId
         handsDealt
         promotionTaken
         moneyTaken
+        createdAt
       }
     }
   }

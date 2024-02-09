@@ -51,10 +51,11 @@ return (
         <ul>
           {data.dealer.reports.map((report, index) => (
             <li key={index}>
-              {data.dealer.lastName +  ", " +data.dealer.firstName + ": "}
+              {report._id}{data.dealer.lastName +  ", " +data.dealer.firstName + ": "}
               {report.handsDealt + " "}
               {report.promotionTaken + " "}
               {report.moneyTaken + " "}
+              {report.createdAt}
             </li>
           ))} 
         </ul>
