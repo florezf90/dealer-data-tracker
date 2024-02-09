@@ -39,6 +39,7 @@ type Mutation {
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 login(email: String!, password: String!): Auth
 addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
+removeDealer(_id: ID!): Dealer
 # Add other mutation fields here
 }
 `;
