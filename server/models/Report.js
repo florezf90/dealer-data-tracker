@@ -6,7 +6,7 @@ const reportSchema = new Schema({
         type:String,
         required:true
     },
-    handsDealt: {
+    handsDelt: {
         type:Number,
         required:true
     },
