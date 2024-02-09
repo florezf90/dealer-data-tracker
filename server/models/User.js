@@ -27,7 +27,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
-  employees: [{ type: Schema.Types.ObjectId, ref: 'Dealer' }],
+  dealers: [{ type: Schema.Types.ObjectId, ref: 'Dealer' }],
 
 });
 

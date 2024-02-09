@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     user: async (parent, { email }) => {
       return User.findOne({ email: email }).populate({
-        path: "employees",
+        path: "dealers",
         populate: {
           path: "reports",
           model: "Report",
@@ -19,7 +19,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
         .populate({
-          path: 'employees',
+          path: 'dealers',
           populate: {
             path: 'reports',
             model: 'Report'
@@ -32,6 +32,14 @@ const resolvers = {
       try {
         const dealers = await Dealer.find().populate("reports");
         return dealers;
+      } catch (err) {
+        throw new Error("Failed to fetch dealers");
+      }
+    },
+    dealer: async(_, { email, _id }) => {
+      try {
+        const dealer = await Dealer.findOne({_id:_id}).populate("reports");
+        return dealer;
       } catch (err) {
         throw new Error("Failed to fetch dealers");
       }
@@ -83,7 +91,7 @@ const resolvers = {
 
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { employees: newDealer._id } },
+          { $push: { dealers: newDealer._id } },
           { new: true }
         );
         console.log(newDealer);
