@@ -22,10 +22,12 @@ reports: [Report]
 }
 
 type Report {
+_id: ID
 dealerId: String
 handsDealt: Int
 promotionTaken: Int
 moneyTaken: Int
+createdAt: String
 }
 
 type Query {
