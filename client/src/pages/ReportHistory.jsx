@@ -1,20 +1,20 @@
-// import { Link } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
-// import { GET_REPORTS } from '../utils/queries'; // Import the GraphQL query
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_DEALER_REPORT,  } from '../utils/queries'; // Import the GraphQL query
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 
 
 const ReportHistory = () => {
-  // const {dealerId}= useParams();
-  // State to store dealer performance data
+  const {dealerId}= useParams();
+  //State to store dealer performance data
 
-  // const { loading, error, data } = useQuery(GET_REPORTS, {
-  //   variables: { email: AuthService.getUserIdFromToken() }
-  // });
+  const { loading, error, data } = useQuery(GET_DEALER_REPORT, {
+    variables: { email: AuthService.getUserIdFromToken() }
+  });
 
     const logout = (event) => {
     event.preventDefault();
@@ -26,33 +26,33 @@ const ReportHistory = () => {
   }
 
 // Check if data is undefined or dealers // employees array is empty
-// if (!data || !data.user || !data.user.employees || data.user.employees.length === 0) {
-//   return (
-//     <div className="report-history">
-//       <h2>Report History</h2>
-//       <p>No reports available</p>
-//       <Link to={"/add-report/"+dealerId}>
-//         <button>Add Report</button>
-//       </Link>
-//     </div>
-//   );
-// }
+if (!data || !data.reports || !data.reports.dealerId || data.reports.dealerId.length === 0) {
+  return (
+    <div className="report-history">
+      <h2>Report History</h2>
+      <p>No reports available</p>
+      <Link to={"/add-report/"+dealerId}>
+        <button>Add Report</button>
+      </Link>
+    </div>
+  );
+}
 
-//     if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error :</p>;
+if (loading) return <p>Loading...</p>;
+if (error) return <p>Error :</p>;
 
 return (
 <div className="report-history">
       <h2>Report History</h2>
       <div className="history">
         <ul>
-          {/* {data.reports.map(report => (////TODOcheck this variable data.reports.map
+          {data.reports.map(report => (////TODOcheck this variable data.reports.map
             <li key={report.dealerId}>
               {report.handsDealt + " "}
               {report.promotionTaken + " "}
               {report.moneyTaken + " "}
             </li>
-          ))} */}
+          ))} 
         </ul>
       </div>
       {Auth.loggedIn() && (
