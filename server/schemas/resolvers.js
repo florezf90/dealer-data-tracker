@@ -81,6 +81,14 @@ const resolvers = {
       }
     },
 
+    removeDealer: async (parent, { _id }, context) => {
+      if (context.user) {
+        return await Dealer.findOneAndDelete({ _id });
+      } else {
+        throw AuthenticationError;
+      }
+    },
+
     addReport: async (_, { dealerId, handsDelt, promotionTaken, moneyTaken }) => {
       try {
         console.log(0);
@@ -98,23 +106,7 @@ const resolvers = {
         throw new Error('Unable to add report');
       }
     },
-
-    addReport: async (_, { dealerId, handsDelt, promotionTaken, moneyTaken }) => {
-      try {
-        const newReport = await Report.create({
-          dealerId,
-          handsDelt,
-          promotionTaken,
-          moneyTaken,
-        });
-        console.log(newReport);
-        return newReport;
-      } catch (error) {
-        console.error('Error adding report:', error);
-        throw new Error('Unable to add report');
-      }
-    },
-  }
+  },
 };
 
 module.exports = resolvers;

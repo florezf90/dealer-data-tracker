@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { GET_DEALERS } from '../utils/queries'; // Import the GraphQL query
 import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { GET_DEALERS } from '../utils/queries'; // Import the GraphQL query
+import { REMOVE_DEALER } from '../utils/mutations';
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
 
@@ -8,15 +10,28 @@ import Auth from '../utils/auth';
 
 const Dashboard = () => {
   // State to store dealer performance data
-    const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  }
+
+  const [removeDealer] = useMutation(REMOVE_DEALER);
 
 
   const { loading, error, data } = useQuery(GET_DEALERS, {
     variables: { email: AuthService.getUserIdFromToken() }
   });
+
+    const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  }
+
+  const handleDelete = async (dealerId) => {
+    try {
+      await removeDealer({
+        variables: { _id: dealerId },
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 
 
@@ -46,11 +61,12 @@ return (
       <div className="dealer-performance-list">
         <ul>
           {data.user.employees.map(dealer => (
-            <li key={dealer.id}>
+            <li key={dealer._id}>
               {dealer.firstName + " "}
               {dealer.lastName + " "}
               {dealer.email + " "}
-              {dealer.createdAt}
+              {dealer.createdAt + " "}
+              <button onClick={() => handleDelete(dealer._id)}> delete </button>
               {/* <Link to="/report-history"><button>view Reports</button></Link> */}
               <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
             </li>
