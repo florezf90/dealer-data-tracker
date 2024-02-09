@@ -28,6 +28,7 @@ const Dashboard = () => {
       await removeDealer({
         variables: { _id: dealerId },
       })
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -67,7 +68,7 @@ return (
               {dealer.email + " "}
               {dealer.createdAt + " "}
               <button onClick={() => handleDelete(dealer._id)}> delete </button>
-              {/* <Link to="/report-history"><button>view Reports</button></Link> */}
+              <Link to={"/report-history/"+dealer._id}><button>view Reports</button></Link>
               <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
             </li>
           ))}

@@ -10,6 +10,7 @@ import Error from './pages/Error';
 import Dashboard from './pages/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
 import ReportForm from './pages/ReportForm.jsx';
+import ReportHistory from './pages/ReportHistory.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
       }, {
         path: '/add-report/:dealerId',
         element: <ReportForm />
+      }, {
+        path: '/report-history/:dealerId',
+        element: <ReportHistory />
       }
     ]
   }

@@ -57,10 +57,10 @@ mutation removeDealer ($_id: ID!) {
 `;
 
 export const ADD_REPORT = gql`
-mutation addReport($dealerId: String!, $handsDelt: Int!, $promotionTaken: Int!, $moneyTaken: Int!) {
-  addReport(dealerId: $dealerId, handsDelt: $handsDelt, promotionTaken: $promotionTaken, moneyTaken: $moneyTaken) {
+mutation addReport($dealerId: String!, $handsDealt: Int!, $promotionTaken: Int!, $moneyTaken: Int!) {
+  addReport(dealerId: $dealerId, handsDealt: $handsDealt, promotionTaken: $promotionTaken, moneyTaken: $moneyTaken) {
     dealerId
-    handsDelt
+    handsDealt
     promotionTaken
     moneyTaken
   }
