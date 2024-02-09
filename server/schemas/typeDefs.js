@@ -4,7 +4,7 @@ _id: ID
 firstName: String
 lastName: String
 email: String
-employees: [Dealer]
+dealers: [Dealer]
 }
 
 type Auth {
@@ -30,9 +30,10 @@ moneyTaken: Int
 
 type Query {
 user(email: String!): User
+dealer(_id: ID!): Dealer
 me: User
 dealers: [Dealer]
-dealerReport: [Report]   # Add this line to define the dealers query
+# Add this line to define the dealers query
 }
 
 type Mutation {

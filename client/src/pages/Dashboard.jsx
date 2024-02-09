@@ -40,8 +40,8 @@ const Dashboard = () => {
     window.location.assign('/login');    
   }
 
-// Check if data is undefined or dealers // employees array is empty
-if (!data || !data.user || !data.user.employees || data.user.employees.length === 0) {
+// Check if data is undefined or dealers // dealers array is empty
+if (!data || !data.user || !data.user.dealers || data.user.dealers.length === 0) {
   return (
     <div className="dashboard">
       <h2>Dealer Performance Dashboard</h2>
@@ -61,7 +61,7 @@ return (
       <h2>Dealer Performance Dashboard</h2>
       <div className="dealer-performance-list">
         <ul>
-          {data.user.employees.map(dealer => (
+          {data.user.dealers.map(dealer => (
             <li key={dealer._id}>
               {dealer.firstName + " "}
               {dealer.lastName + " "}
