@@ -23,7 +23,7 @@ reports: [Report]
 
 type Report {
 dealerId: String
-handsDelt: Int
+handsDealt: Int
 promotionTaken: Int
 moneyTaken: Int
 }

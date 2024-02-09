@@ -17,7 +17,7 @@ const resolvers = {
     },
     dealers: async () => {
       try {
-        const dealers = await Dealer.find();
+        const dealers = await Dealer.find().populate("reports");
         return dealers;
       } catch (err) {
         throw new Error("Failed to fetch dealers");
@@ -98,6 +98,13 @@ const resolvers = {
           promotionTaken,
           moneyTaken,
         });
+
+        const dealer = await Dealer.findOneAndUpdate(
+          { _id: dealerId },
+          { $push: { reports: newReport._id } },
+          { new: true }
+        );
+        
         console.log(newReport);
         console.log(1);
         return newReport;
