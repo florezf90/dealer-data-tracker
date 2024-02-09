@@ -16,10 +16,10 @@ export const GET_DEALERS = gql`
 export const GET_DEALER_REPORT = gql`
   query GetDealerReport {
     dealerReport {
-      id
+      dealerId
       handsDealt
-      promotionalDrops
+      promotionTaken
       moneyTaken
     }
   }
-`
+`;

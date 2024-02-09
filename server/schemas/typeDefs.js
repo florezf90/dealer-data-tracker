@@ -31,7 +31,8 @@ moneyTaken: Int
 type Query {
 user(email: String!): User
 me: User
-dealers: [Dealer]   # Add this line to define the dealers query
+dealers: [Dealer]
+dealerReport: [Report]   # Add this line to define the dealers query
 }
 
 type Mutation {
