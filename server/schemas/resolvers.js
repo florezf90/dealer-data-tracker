@@ -6,12 +6,25 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async (parent, { email }) => {
-      return User.findOne({ email: email }).populate("employees");
+      return User.findOne({ email: email }).populate({
+        path: "employees",
+        populate: {
+          path: "reports",
+          model: "Report",
+        },
+      });
     },
     //uses context of JWT to get info
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("employees");
+        return User.findOne({ _id: context.user._id })
+        .populate({
+          path: 'employees',
+          populate: {
+            path: 'reports',
+            model: 'Report'
+          }
+        });
       }
       throw AuthenticationError;
     },
@@ -60,7 +73,7 @@ const resolvers = {
       return { token, profile };
     },
 
-    addDealer: async (_, { firstName, lastName, email }, context ) => {
+    addDealer: async (_, { firstName, lastName, email }, context) => {
       try {
         const newDealer = await Dealer.create({
           firstName,
@@ -72,7 +85,7 @@ const resolvers = {
           { _id: context.user._id },
           { $push: { employees: newDealer._id } },
           { new: true }
-        )
+        );
         console.log(newDealer);
         return newDealer;
       } catch (error) {
@@ -89,7 +102,10 @@ const resolvers = {
       }
     },
 
-    addReport: async (_, { dealerId, handsDealt, promotionTaken, moneyTaken }) => {
+    addReport: async (
+      _,
+      { dealerId, handsDealt, promotionTaken, moneyTaken }
+    ) => {
       try {
         console.log(0);
         const newReport = await Report.create({
@@ -104,13 +120,13 @@ const resolvers = {
           { $push: { reports: newReport._id } },
           { new: true }
         );
-        
+
         console.log(newReport);
         console.log(1);
         return newReport;
       } catch (error) {
-        console.error('Error adding report:', error);
-        throw new Error('Unable to add report');
+        console.error("Error adding report:", error);
+        throw new Error("Unable to add report");
       }
     },
   },

@@ -15,6 +15,7 @@ const ReportHistory = () => {
   });
   console.log('query data: ' +data);
 
+console.log(data)
     const logout = (event) => {
     event.preventDefault();
     Auth.logout();
