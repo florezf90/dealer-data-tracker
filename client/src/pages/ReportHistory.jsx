@@ -1,6 +1,6 @@
 // import { Link } from 'react-router-dom';
 // import { useQuery } from '@apollo/client';
-// import { GET_REPORTS } from '../utils/queries'; // Import the GraphQL query
+// import { GET_REPORTS } from '../utils/queries'; // Import the GraphQL query//TODO check var GET_REPORTS
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
 // import { useParams } from 'react-router-dom';
@@ -12,7 +12,7 @@ const ReportHistory = () => {
   // const {dealerId}= useParams();
   // State to store dealer performance data
 
-  // const { loading, error, data } = useQuery(GET_REPORTS, {
+  // const { loading, error, data } = useQuery(GET_REPORTS, {//TODO check var'GET_REPORTS'
   //   variables: { email: AuthService.getUserIdFromToken() }
   // });
 
@@ -26,7 +26,7 @@ const ReportHistory = () => {
   }
 
 // Check if data is undefined or dealers // employees array is empty
-// if (!data || !data.user || !data.user.employees || data.user.employees.length === 0) {
+// if (!data || !data.reports || !data.reports || data.reports === 0) {//TODO check vars 'reports'
 //   return (
 //     <div className="report-history">
 //       <h2>Report History</h2>
