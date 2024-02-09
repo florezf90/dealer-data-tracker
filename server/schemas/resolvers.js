@@ -5,12 +5,12 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async (parent, { email }) => {
-      return User.findOne({ email: email });
+      return User.findOne({ email: email }).populate("employees");
     },
     //uses context of JWT to get info
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate("employees");
       }
       throw AuthenticationError;
     },
@@ -19,9 +19,9 @@ const resolvers = {
         const dealers = await Dealer.find();
         return dealers;
       } catch (err) {
-        throw new Error('Failed to fetch dealers');
+        throw new Error("Failed to fetch dealers");
       }
-    }
+    },
   },
 
   Mutation: {
@@ -59,27 +59,35 @@ const resolvers = {
       return { token, profile };
     },
 
+    addDealer: async (_, { firstName, lastName, email }, context ) => {
+      try {
+        const newDealer = await Dealer.create({
+          firstName,
+          lastName,
+          email,
+        });
 
-    addDealer: async (_, { firstName, lastName, email }, context) => {
-        if (!context.user) {
-          throw new Error('User not authenticated');
-        }
-      
-        try {
-          const newDealer = await Dealer.create({
-            firstName,
-            lastName,
-            email,
-            createdBy: context.user._id, // Set createdBy to the ID of the authenticated user
-          });
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { employees: newDealer._id } },
+          { new: true }
+        )
         console.log(newDealer);
         return newDealer;
       } catch (error) {
-        console.error('Error adding dealer:', error);
-        throw new Error('Unable to add dealer');
+        console.error("Error adding dealer:", error);
+        throw new Error("Unable to add dealer");
       }
     },
-  }
+
+    removeDealer: async (parent, { _id }, context) => {
+      if (context.user) {
+        return await Dealer.findOneAndDelete({ _id });
+      } else {
+        throw AuthenticationError;
+      }
+    }
+  },
 };
 
 module.exports = resolvers;

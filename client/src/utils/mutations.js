@@ -42,4 +42,18 @@ mutation AddDealer($userId: ID!, $firstName: String!, $lastName: String!, $email
     email
   }
 }
-`;//TODO add way to tie to user (id or email or something)
+`
+
+export const REMOVE_DEALER = gql`
+mutation removeDealer ($_id: ID!) {
+  removeDealer(_id: $_id) {
+    _id
+    firstName
+    lastName
+    email
+    createdAt
+  }
+}
+`
+
+;//TODO add way to tie to user (id or email or something)

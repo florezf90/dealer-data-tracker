@@ -4,7 +4,7 @@ _id: ID
 firstName: String
 lastName: String
 email: String
-dealers: [Dealer] 
+employees: [Dealer]
 }
 
 
@@ -40,7 +40,9 @@ dealers: [Dealer]
 type Mutation {
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 login(email: String!, password: String!): Auth
-addDealer(userId: ID!firstName: String!, lastName: String!, email: String!): Dealer!
+addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
+removeDealer(_id: ID!): Dealer
+# Add other mutation fields here
 }
 `;
 module.exports = typeDefs;
