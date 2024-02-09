@@ -16,6 +16,7 @@ const ReportHistory = () => {
     variables: { email: AuthService.getUserIdFromToken() }
   });
 
+console.log(data)
     const logout = (event) => {
     event.preventDefault();
     Auth.logout();
