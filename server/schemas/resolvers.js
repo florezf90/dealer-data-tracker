@@ -83,6 +83,7 @@ const resolvers = {
 
     addReport: async (_, { dealerId, handsDelt, promotionTaken, moneyTaken }) => {
       try {
+        console.log(0);
         const newReport = await Report.create({
           dealerId,
           handsDelt,
@@ -90,6 +91,7 @@ const resolvers = {
           moneyTaken,
         });
         console.log(newReport);
+        console.log(1);
         return newReport;
       } catch (error) {
         console.error('Error adding report:', error);
