@@ -65,6 +65,9 @@ const ReportHistory = () => {
           ))}
         </ul>
       </div>
+      <Link to="/dashboard">
+        <button>Back to Dashboard</button>
+      </Link>
       {Auth.loggedIn() && (
         <button className="btn btn-lg btn-light m-2" onClick={logout}>
           Logout
