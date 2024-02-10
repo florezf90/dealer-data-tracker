@@ -1,39 +1,35 @@
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
-import MainNavbar from '../components/navbar/navbar';
-
-
-
+import MainNavbar from "../components/navbar/navbar";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import logomainpage from "../assets/logo-main-page.png";
 
 const Home = () => {
 
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  }
   return (
     <main>
       <MainNavbar />
-      <div className="">
-        <div className="">
-          <h1>welcome to the homepage</h1>
-          <Link className="btn btn-lg btn-primary m-2" to="/login">
-            login
-          </Link>
-          <br/>
-          <Link className="btn btn-lg btn-primary m-2" to="/signup">
-            sign-up
-          </Link>
-          {Auth.loggedIn() && (
-            <button className="btn btn-lg btn-light m-2" onClick={logout}>
-              Logout
-            </button>
-          )}
-        </div>
-      </div>
+          <div className="hero-container mt-5 p-5">
+      <Container>
+        <Row className="text-center mt-5">
+          <Col>
+            <h1 className="display-1 "> Big Centered Title</h1>
+            <p className="smaller-font">Paragraph below the title with smaller font size</p>
+          </Col>
+        </Row>
+        <Row className="text-center">
+          <Col>
+            <Button variant="primary" size="lg" className="m-4" onClick={() => window.location.assign('#features')}>Learn More</Button>
+            <Button variant="secondary " size="lg" className="m-4" onClick={() => window.location.assign('/signup')}>Start Free Trial</Button>
+          </Col>
+        </Row>
+        <Row className="text-center">
+          <Col>
+            <img src={logomainpage} alt="Image" className="img-fluid" />
+          </Col>
+        </Row>
+      </Container>
+    </div>
     </main>
   );
 };
 
 export default Home;
-
