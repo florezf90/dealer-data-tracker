@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
+import MainNavbar from '../components/navbar/navbar';
+
+
+
+
 const Home = () => {
 
   const logout = (event) => {
@@ -8,6 +13,7 @@ const Home = () => {
   }
   return (
     <main>
+      <MainNavbar />
       <div className="">
         <div className="">
           <h1>welcome to the homepage</h1>
@@ -30,3 +36,4 @@ const Home = () => {
 };
 
 export default Home;
+
