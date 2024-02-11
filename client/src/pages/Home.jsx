@@ -2,6 +2,7 @@ import MainNavbar from "../components/navbar/navbar";
 import PresentationModel from "../components/presentation/presentationmodel";
 import TitleAndParagraph from "../components/title/titleAndParagraph";
 import TwoColumnHero from "../components/feature-cards/featurecards";
+import Footer from "../components/footer/footer";
 import img1 from "../assets/satistaction.png";
 import img2 from "../assets/tracking_3273399.png";
 import img3 from "../assets/revenue.png";
@@ -47,6 +48,7 @@ const numRows = 5;
     <TitleAndParagraph title={featuresTtle} paragraph={featuresP}  />
     <TwoColumnHero numRows={numRows} rowContents={rowContents} />
     </div>
+    <Footer />
     </main>
   );
 };
