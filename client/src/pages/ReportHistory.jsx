@@ -54,9 +54,9 @@ const ReportHistory = () => {
           {data.dealer.reports.map((report, index) => (
             <li key={index}>
               <p>
-                Dealer :{report._id}
-                {data.dealer.lastName + ", " + data.dealer.firstName + ": "}
+                Report ID :{report._id}
               </p>
+              <p> dealer name: {data.dealer.lastName + ", " + data.dealer.firstName + ": "}</p>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
               <p>Promotion Taken: {report.promotionTaken + " "}</p>
               <p>Money Taken: {report.moneyTaken + " "}</p>
