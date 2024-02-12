@@ -1,0 +1,41 @@
+.report-history {
+  padding: 20px;
+}
+
+.report-history h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.history {
+  margin-bottom: 20px;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  margin-bottom: 40px;
+}
+
+.history li p {
+  font-size: 18px; 
+  font-weight: bold; 
+  color: white; 
+  margin-bottom: 8px;
+}
+
+.history li button {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.history li button:hover {
+  background-color: #c40000;
+}

@@ -48,14 +48,14 @@ const ReportHistory = () => {
 
   return (
     <div className="report-history">
-      <h2>Report History</h2>
+      <h2>Report History   for              Dealer :
+                {data.dealer.lastName + ", " + data.dealer.firstName}</h2>
       <div className="history">
         <ul>
           {data.dealer.reports.map((report, index) => (
             <li key={index}>
+              <p>REPORT {index + 1}:</p>
               <p>
-                Dealer :{report._id}
-                {data.dealer.lastName + ", " + data.dealer.firstName + ": "}
               </p>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
               <p>Promotion Taken: {report.promotionTaken + " "}</p>

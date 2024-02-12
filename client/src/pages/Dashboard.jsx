@@ -5,8 +5,7 @@ import { GET_DEALERS } from '../utils/queries'; // Import the GraphQL query
 import { REMOVE_DEALER } from '../utils/mutations';
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
-
-
+import './dashboard.css';
 
 const Dashboard = () => {
   // State to store dealer performance data
@@ -59,16 +58,18 @@ if (!data || !data.user || !data.user.dealers || data.user.dealers.length === 0)
 return (
 <div className="dashboard">
       <h2>Dealer Performance Dashboard</h2>
+
       <div className="dealer-performance-list">
         <ul>
           {data.user.dealers.map(dealer => (
             <li key={dealer._id}>
-              {dealer.firstName + " "}
-              {dealer.lastName + " "}
+          <span className="dealer-name">
+            {dealer.firstName} {dealer.lastName}
+          </span>
               {dealer.email + " "}
-              {dealer.createdAt + " "}
-              <button onClick={() => handleDelete(dealer._id)}> delete </button>
-              <Link to={"/report-history/"+dealer._id}><button>view Reports</button></Link>
+              <p>Created on : {dealer.createdAt + " "}</p>
+              <button onClick={() => handleDelete(dealer._id)}> DELETE </button>
+              <Link to={"/report-history/"+dealer._id}><button>View Reports</button></Link>
               <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
             </li>
           ))}

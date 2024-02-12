@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_REPORT } from '../utils/mutations';
 import  AuthService  from '../utils/auth';
 import { useParams } from 'react-router-dom';
-
+import './reporthistory.css';
 
 
 
