@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App.jsx'
 import Signup from './pages/Signup';
@@ -11,6 +12,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
 import ReportForm from './pages/ReportForm.jsx';
 import ReportHistory from './pages/ReportHistory.jsx';
+import ReportHistoryPrototype from './pages/prototype/Prototype.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,9 @@ const router = createBrowserRouter([
       }, {
         path: '/report-history/:dealerId',
         element: <ReportHistory />
+      }, {
+        path: '/report-history-Prototype/:dealerId',
+        element: <ReportHistoryPrototype />
       }
     ]
   }
