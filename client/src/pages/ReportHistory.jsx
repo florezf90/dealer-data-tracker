@@ -4,6 +4,7 @@ import { GET_DEALER } from "../utils/queries"; // Import the GraphQL query
 import AuthService from "../utils/auth";
 import Auth from "../utils/auth";
 import { useParams } from "react-router-dom";
+import './reportHistory.css'
 
 const ReportHistory = () => {
   const { dealerId } = useParams();
@@ -27,10 +28,7 @@ const ReportHistory = () => {
 
   // Check if data is undefined or dealers // dealers array is empty
   if (
-    !data ||
-    !data.dealer ||
-    !data.dealer.reports ||
-    data.dealer.reports.length === 0
+    !data || !data.dealer || !data.dealer.reports || data.dealer.reports.length === 0
   ) {
     return (
       <div className="report-history">
@@ -45,10 +43,19 @@ const ReportHistory = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
+ // Calculate average values
+ const totalReports = data.dealer.reports.length;
+ const handsDealtTotal = data.dealer.reports.reduce((acc, report) => acc + report.handsDealt, 0);
+ const promotionTakenTotal = data.dealer.reports.reduce((acc, report) => acc + report.promotionTaken, 0);
+ const moneyTakenTotal = data.dealer.reports.reduce((acc, report) => acc + report.moneyTaken, 0);
+
+ const averageHandsDealt = handsDealtTotal / totalReports;
+ const averagePromotionTaken = promotionTakenTotal / totalReports;
+ const averageMoneyTaken = moneyTakenTotal / totalReports;
 
   return (
     <div className="report-history">
-      <h2>Report History   for              Dealer :
+      <h2>Report History   for              Dealer -
                 {data.dealer.lastName + ", " + data.dealer.firstName}</h2>
       <div className="history">
         <ul>
@@ -58,13 +65,20 @@ const ReportHistory = () => {
               <p>
               </p>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
-              <p>Promotion Taken: {report.promotionTaken + " "}</p>
-              <p>Money Taken: {report.moneyTaken + " "}</p>
+              <p>Promotional Money Taken: {report.promotionTaken + " "}</p>
+              <p>Errors Made: {report.moneyTaken + " "}</p>
               <p>Report Date: {report.createdAt}</p>
             </li>
           ))}
         </ul>
       </div>
+      <div className="average-section">
+        <h3>Average Values</h3>
+        <p>Average Hands Dealt: {averageHandsDealt.toFixed(2)}</p>
+        <p>Average Promotion Money Taken: {averagePromotionTaken.toFixed(2)}</p>
+        <p>Average Errors Made: {averageMoneyTaken.toFixed(2)}</p>
+      </div>
+      <Link to={"/add-report/"}><button>New Report</button></Link>
       <Link to="/dashboard">
         <button>Back to Dashboard</button>
       </Link>

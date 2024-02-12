@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_REPORT } from '../utils/mutations';
 import  AuthService  from '../utils/auth';
 import { useParams } from 'react-router-dom';
-import './reporthistory.css';
+
 
 
 
@@ -60,7 +60,7 @@ function ReportForm() {
       <h2>Dealer Report</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <label htmlFor="dealerId">dealerId:</label>
+          <label htmlFor="dealerId">DealerId:</label>
           <input
             value={dealerId}
             name="dealerId"
@@ -91,7 +91,7 @@ function ReportForm() {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="moneyTaken">Money Taken:</label>
+          <label htmlFor="moneyTaken">Errors made:</label>
           <input
             placeholder="Last"
             name="moneyTaken"

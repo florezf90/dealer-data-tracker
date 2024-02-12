@@ -23,13 +23,16 @@ const Dashboard = () => {
   }
 
   const handleDelete = async (dealerId) => {
-    try {
-      await removeDealer({
-        variables: { _id: dealerId },
-      })
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
+    const confirmDelete = window.confirm("Are you sure you want to delete this dealer?"); //delete confirmation pop up
+    if (confirmDelete) {
+      try {
+        await removeDealer({
+          variables: { _id: dealerId },
+        });
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 

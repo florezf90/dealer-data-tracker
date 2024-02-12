@@ -39,3 +39,23 @@
 .history li button:hover {
   background-color: #c40000;
 }
+.average-section {
+  position: fixed;
+  font-weight: bold; 
+  top: 20px; 
+  right: 20px; 
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 8px;
+  color: rgb(243, 234, 234);
+}
+
+.average-section h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.average-section p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
