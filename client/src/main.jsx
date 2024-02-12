@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App.jsx'
 import AboutUs from './pages/aboutus.jsx';
+import ContactUs from './pages/contactus.jsx'
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/about-us',
         element: <AboutUs />
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs/>
       },
       {
         path: '/login',
