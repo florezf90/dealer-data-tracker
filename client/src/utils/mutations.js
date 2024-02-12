@@ -66,3 +66,9 @@ mutation addReport($dealerId: String!, $handsDealt: Int!, $promotionTaken: Int!,
   }
 }
 `;
+
+export const SEND_EMAIL = gql`
+mutation sendEmail($input: EmailInput!) {
+  sendEmail(input: $input)
+}
+`

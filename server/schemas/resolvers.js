@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const Dealer = require('../models/Dealer');
 const Report = require("../models/Report");
+const transporter = require("../utils/email");
+
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -14,16 +16,16 @@ const resolvers = {
         },
       });
     },
+
     //uses context of JWT to get info
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id })
-        .populate({
-          path: 'dealers',
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "dealers",
           populate: {
-            path: 'reports',
-            model: 'Report'
-          }
+            path: "reports",
+            model: "Report",
+          },
         });
       }
       throw AuthenticationError;
@@ -36,9 +38,9 @@ const resolvers = {
         throw new Error("Failed to fetch dealers");
       }
     },
-    dealer: async(_, { email, _id }) => {
+    dealer: async (_, { email, _id }) => {
       try {
-        const dealer = await Dealer.findOne({_id:_id}).populate("reports");
+        const dealer = await Dealer.findOne({ _id: _id }).populate("reports");
         return dealer;
       } catch (err) {
         throw new Error("Failed to fetch dealers");
@@ -135,6 +137,35 @@ const resolvers = {
       } catch (error) {
         console.error("Error adding report:", error);
         throw new Error("Unable to add report");
+      }
+    },
+
+
+    sendEmail: async (_, { input: { fullname, contactMethod, email, phone, subject, message  } }) => {
+      try {
+        const mailOptions = {
+          from: email,
+          to: "florezf90@gmail.com",
+          subject: subject,
+          text: `Name: ${fullname}\nContact Method: ${
+            contactMethod === "email" ? "Email" : "Phone"
+          } - ${
+            contactMethod === "email" ? email : phone
+          }\nMessage: ${message}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error('error sending email:',error);
+            throw new Error('Error sending email');
+          } else {
+            console.log('Email sent:', info.response)
+          }
+        });
+        return 'email sent successfully';
+      } catch (error) {
+            console.error("Error sending email:", error);
+            throw new Error("Error sending email");
       }
     },
   },
