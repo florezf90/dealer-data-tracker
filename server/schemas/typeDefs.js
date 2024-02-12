@@ -21,6 +21,15 @@ createdAt: String
 reports: [Report]
 }
 
+input EmailInput {
+    fullname: String!
+    contactMethod: String!
+    email: String
+    phone: String
+    subject: String!
+    message: String!
+}
+
 type Report {
 _id: ID
 dealerId: String
@@ -44,7 +53,7 @@ login(email: String!, password: String!): Auth
 addDealer(firstName: String!, lastName: String!, email: String!): Dealer!
 removeDealer(_id: ID!): Dealer
 addReport( dealerId: String!, handsDealt: Int!, promotionTaken: Int!, moneyTaken: Int! ):Report
-# Add other mutation fields here
+sendEmail(input: EmailInput!): String
 }
 `;
 module.exports = typeDefs;

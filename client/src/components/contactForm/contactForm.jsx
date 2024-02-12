@@ -1,14 +1,19 @@
+/* eslint-disable no-unused-vars */
 import  { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { SEND_EMAIL } from "../../utils/mutations";
    
    const ContactForm = () => {
     
    const [contactMethod, setContactMethod] = useState("email");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [name, setName] = useState("");
+    const [fullname, setfullname] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
+
+    const [sendEmail] = useMutation(SEND_EMAIL);
 
     const handleContactMethodChange = (e) => {
         setContactMethod(e.target.value);
@@ -19,38 +24,29 @@ import { Form, Button } from "react-bootstrap";
         console.log("contact method: " + contactMethod);
 
         const formData = {
-        name,
+        fullname,
         contactMethod,
         email: contactMethod === 'email' ? email : phone,
         subject,
         message
         };
 
-
-        fetch("/api/contact", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-        })
-        .then((res) => {
-        if (res.ok) {
-            alert("Message sent successfully");
-        } else {
-            alert("Failed to send message, please try again");
-        }
-        }).catch((error) => {
-        console.log(error);
-        })
-    }
+sendEmail({variables: {input: formData}})
+.then((res) => {
+    alert("Email sent successfully");
+})
+   .catch((err) => {
+       alert("Error sending email");
+             console.error(err);
+   });     
+    };
 
 
  return (
-    <Form style={{ maxWidth: "500px", margin: "0 auto" }}>
-      <Form.Group controlId="firstName">
+    <Form className="mx-auto" style={{ maxWidth: "400px", margin: "0 auto" }}>
+      <Form.Group controlId="fullname">
         <Form.Label> Name</Form.Label>
-        <Form.Control type="text" onChange={(e) => setName(e.target.value)} />
+        <Form.Control type="text" onChange={(e) => setfullname(e.target.value)} placeholder="John Smith"/>
       </Form.Group>
       <Form.Group controlId="contactMethod">
         <Form.Label className="my-3">Contact Method</Form.Label>
