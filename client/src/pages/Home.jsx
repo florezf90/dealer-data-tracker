@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
+import './home.css'
 const Home = () => {
 
   const logout = (event) => {
@@ -10,7 +11,9 @@ const Home = () => {
     <main>
       <div className="">
         <div className="">
-          <h1>welcome to the homepage</h1>
+          <h1>Welcome to the Homepage</h1>
+          <h2>To see your dealers. . .</h2> 
+          <h3>Log in with your companie's email/password</h3>
           <Link className="btn btn-lg btn-primary m-2" to="/login">
             login
           </Link>
