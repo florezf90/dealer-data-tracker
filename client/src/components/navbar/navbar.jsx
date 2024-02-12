@@ -27,9 +27,6 @@ const MainNavbar = () => {
     };
   }, [location.pathname]); // Empty dependency array to ensure the effect runs only once
 
-
-
-  
   const dropdownTitle = `Menu`;
   const dropdownOptions = [
     { label: "Features", href: "#features" },
@@ -41,19 +38,30 @@ const MainNavbar = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         {isSmallScreen && (
-          <CustomDropdown title={dropdownTitle} options={
-            location.pathname === "/" ? dropdownOptions : dropdownOptions.slice(1)} />
+          <CustomDropdown
+            title={dropdownTitle}
+            options={
+              location.pathname === "/"
+                ? dropdownOptions
+                : dropdownOptions.slice(1)
+            }
+          />
         )}
 
-        <Navbar.Brand href="/">Your Logo</Navbar.Brand>
+        <Navbar.Brand href="/">go home</Navbar.Brand>
         <Nav className={isSmallScreen ? "mr-auto hidden" : "mr-auto"}>
-                  {location.pathname !== "/about-us" && location.pathname !== "/contact-us" && (
-          <Nav className={isSmallScreen ? "mr-auto hidden" : "mr-auto"}>
-            <Nav.Link href="#features"> Features</Nav.Link>
-          </Nav>
-        )}
-          <Nav.Link href="/about-us">About Us</Nav.Link>
-          <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+          {location.pathname !== "/about-us" &&
+            location.pathname !== "/contact-us" && ( // conditional rendering for "features" dropdown
+              <Nav className={isSmallScreen ? "mr-auto hidden" : "mr-auto"}>
+                <Nav.Link href="#features"> Features</Nav.Link>
+              </Nav>
+            )}
+          {location.pathname !== "/about-us" && ( // Conditionally render "About Us" link
+            <Nav.Link href="/about-us">About Us</Nav.Link>
+          )}
+          {location.pathname !== "/contact-us" && ( // Conditionally render "Contact Us" link
+            <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+          )}
         </Nav>
         <Nav className={isSmallScreen ? "hidden" : "justify-content-between "}>
           {isLoggedIn && <Nav.Link onClick={Auth.logout}>Log Out</Nav.Link>}
