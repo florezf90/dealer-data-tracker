@@ -7,8 +7,8 @@ const PresentationModel = ({ title, paragraph}) => {
     <Container>
       <Row className="text-center mt-5">
         <Col>
-          <h1 className="display-1 " style={{ marginTop: "30px" }}> {title}</h1>
-          <p className="smaller-font">
+          <h1 className="display-1 " style={{ marginTop: "30px", textShadow: '3px 3px 8px rgba(0, 0, 0, 6)' }} > {title}</h1>
+          <p className="smaller-font" style={{ color: '#F0F0F0', textShadow: '2px 2px 3px rgba(0, 0, 0, 6)', fontSize: '1.2em' }}>
             {paragraph}
           </p>
         </Col>

@@ -8,7 +8,7 @@ function CustomDropdown({ title, options }) {
     Auth.logout();
   };
   return (
-    <NavDropdown title={title} id="basic-nav-dropdown">
+    <NavDropdown title={title} id="basic-nav-dropdown"style={{ color: "black" }}>
       {options.map((option, index) => (
         <NavDropdown.Item key={index} href={option.href}>
           {option.label}
