@@ -51,3 +51,21 @@ export const GET_DEALERS_AND_REPORTS = gql`
     }
   }
   `
+
+  export const GET_LAST_REPORT = gql`
+    query GetLastReport($dealerId: ID!) {
+      lastReport(dealerId: $dealerId) {
+        _id
+        dealerId
+        handsDealt
+        promotionTaken
+        moneyTaken
+        createdAt
+      }
+      dealer(_id: $dealerId) {
+        _id
+        firstName
+        lastName
+      }
+    }
+  `;
