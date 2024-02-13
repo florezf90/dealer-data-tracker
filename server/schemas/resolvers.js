@@ -46,6 +46,15 @@ const resolvers = {
         throw new Error("Failed to fetch dealers");
       }
     },
+
+    lastReport: async (_, {dealerId}) => {
+      try {
+        const Lastreport = await Report.findOne({dealerId}).sort({ createdAt: -1 }).exec();
+        return Lastreport;
+      } catch (err) {
+        throw new Error("Failed to fetch last report", err);
+      }
+    }
   },
 
   Mutation: {
