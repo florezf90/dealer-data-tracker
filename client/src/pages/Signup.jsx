@@ -36,12 +36,6 @@ function Signup() {
       <MainNavbar />
       <Row style={{ height: '70vh' }}>
         <Col md={6} className="signup-left d-flex align-items-center justify-content-center">
-          <div className="placeholder-text">
-            <h2>Join our community</h2>
-            <p>Get access to exclusive features by signing up.</p>
-          </div>
-        </Col>
-        <Col md={6} className="signup-right d-flex align-items-center justify-content-center">
           <Card className="w-50">
             <Card.Body className="d-flex flex-column align-items-center">
               <h1 className="text-center">Signup</h1>
@@ -103,6 +97,12 @@ function Signup() {
             </Card.Body>
           </Card>
         </Col>
+        <Col md={6} className="signup-right d-flex align-items-center justify-content-center">
+          <div className="placeholder-text">
+            <h2>Join our community</h2>
+            <p>Get access to exclusive features by signing up.</p>
+          </div>
+        </Col>
       </Row>
     </main>
 
@@ -110,3 +110,4 @@ function Signup() {
 }
 
 export default Signup;
+

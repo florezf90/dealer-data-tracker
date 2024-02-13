@@ -40,9 +40,6 @@ const Login = (props) => {
       <MainNavbar/>
       <Row style={{ height: '70vh' }}>
         <Col md={6} className="login-left d-flex align-items-center justify-content-center">
-          <div className="welcome-back-text" style={{ fontSize: '3rem' }}>Welcome back!</div>
-        </Col>
-        <Col md={6} className="login-right d-flex align-items-center justify-content-center" >
           <Card className="w-50">
             <Card.Body className="d-flex flex-column align-items-center">
               <h1 className="text-center">Login</h1>
@@ -89,9 +86,17 @@ const Login = (props) => {
             </Card.Body>
           </Card>
         </Col>
+        <Col md={6} className="login-right d-flex align-items-center justify-content-center" >
+          <div className="welcome-back-text" style={{ fontSize: '3rem' }}>Welcome back!</div>
+
+        </Col>
       </Row>
     </main>
   );
 };
 
 export default Login;
+
+
+
+          
