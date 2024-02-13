@@ -15,6 +15,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
 import ReportForm from './pages/ReportForm.jsx';
 import ReportHistory from './pages/ReportHistory.jsx';
+import ReportHistoryPrototype from './pages/prototype/Prototype.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,9 @@ const router = createBrowserRouter([
       }, {
         path: '/report-history/:dealerId',
         element: <ReportHistory />
+      }, {
+        path: '/report-history-Prototype/:dealerId',
+        element: <ReportHistoryPrototype />
       }
     ]
   }

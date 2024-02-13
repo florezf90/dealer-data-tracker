@@ -25,7 +25,7 @@ const ReportHistory = () => {
     window.location.assign("/login");
   }
 
-  // Check if data is undefined or dealers // dealers array is empty
+  // Check if data is undefined or dealers // reports array is empty
   if (
     !data ||
     !data.dealer ||

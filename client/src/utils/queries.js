@@ -29,3 +29,25 @@ export const GET_DEALER = gql`
     }
   }
 `;
+
+export const GET_DEALERS_AND_REPORTS = gql`
+  query GetDealersAndReports($email: String!) {
+    user(email: $email) {
+      dealers {
+        _id
+        firstName
+        lastName
+        email
+        createdAt
+        reports{
+          _id
+          dealerId
+          handsDealt
+          promotionTaken
+          moneyTaken
+          createdAt
+        }
+      }
+    }
+  }
+  `
