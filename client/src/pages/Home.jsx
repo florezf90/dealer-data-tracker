@@ -15,23 +15,23 @@ const Home = () => {
   const featuresP = "Find out the advantages of using Dealer Data Tracker";
   const rowContents = [
     {
-      title: "Title 1",
-      paragraph: "Paragraph 1",
+      title: "Accurate Records",
+      paragraph: "Accurately track your dealers depending on what metrics you want to keep track of!",
       imgSrc: img1,
     },
     {
-      title: "Title 2",
-      paragraph: "Paragraph 2",
+      title: "Progress and Inmprovement",
+      paragraph: "Track dealer progress over time to see who's improving",
       imgSrc: img2,
     },
     {
-      title: "Title 3",
-      paragraph: "Paragraph 3",
+      title: "Money!",
+      paragraph: "Make the right adjustments for who you r top dealers are based on earnings!",
       imgSrc: img3,
     },
     {
-      title: "Title 4",
-      paragraph: "Paragraph 4",
+      title: "Customize Metrics",
+      paragraph: "Customize metrics for your pokerhouse based on your business needs. Fully customizable stats, and categories",
       imgSrc: img4,
     },
   ];

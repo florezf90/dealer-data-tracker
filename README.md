@@ -1,7 +1,7 @@
 # dealer-data-tracker
 
 ## Description
-    We embarked on this project to be able to track a subject that any workplace likes to keep track of, Metrics! This specific app was built with a pokerhouse in mind. Created to allow supervisors to keep records when they audit their dealers metrics and store them to track a dealers preformance is over time. 
+    We embarked on this project to be able to track any metrics that a workplace might like to keep track of. This specific app was built with a pokerhouse in mind. Created to allow supervisors to keep records when they audit their dealers metrics and store them to track a dealers preformance over time. 
 
 ## Table of Contents (Optional)
 
