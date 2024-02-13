@@ -64,7 +64,7 @@ const ReportHistory = () => {
             {currentDealer.lastName+", "+currentDealer.firstName}
           </Dropdown.Item>
           {otherDealers.map((dealer, index)=>(
-            <Dropdown.Item href={'/report-history-prototype/'+dealer._id} key={index}>
+            <Dropdown.Item href={'/report-history/'+dealer._id} key={index}>
               {dealer.lastName+", "+dealer.firstName}
             </Dropdown.Item>
           ))}
