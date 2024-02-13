@@ -16,13 +16,37 @@ const ReportHistory = () => {
   //diffrent displays for while loading and if theres an error
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
+  
   //extracts and sorts data => gets current dealer to set for top of select and to view reports
   const userData = data;
   const dealers = userData.user.dealers;
   const currentDealer = dealers.find((dealer)=>dealer._id==dealerId);
   const otherDealers = dealers.filter((dealer)=> dealer._id !== dealerId);
   console.log(currentDealer);
-  //logout functionality
+
+    // Calculate averages for each category
+    const calculateAverages = () => {
+      let handsDealtTotal = 0;
+      let promotionTakenTotal = 0;
+      let moneyTakenTotal = 0;
+  
+      currentDealer.reports.forEach(report => {
+        handsDealtTotal += report.handsDealt;
+        promotionTakenTotal += report.promotionTaken;
+        moneyTakenTotal += report.moneyTaken;
+      });
+  
+      const totalReports = currentDealer.reports.length;
+  
+      return {
+        handsDealtAvg: totalReports > 0 ? handsDealtTotal / totalReports : 0,
+        promotionTakenAvg: totalReports > 0 ? promotionTakenTotal / totalReports : 0,
+        moneyTakenAvg: totalReports > 0 ? moneyTakenTotal / totalReports : 0
+      };
+    };
+    const averages = calculateAverages();
+    
+    //logout functionality
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -109,6 +133,14 @@ const ReportHistory = () => {
         </Col>
       </Row>
       <Row>
+      <Col>
+          <h2>Average Report Categories</h2>
+          <p>Hands Dealt Average: {averages.handsDealtAvg.toFixed(2)}</p>
+          <p>Promotion Taken Average: {averages.promotionTakenAvg.toFixed(2)}</p>
+          <p>Money Taken Average: {averages.moneyTakenAvg.toFixed(2)}</p>
+        </Col>
+        </Row>
+        <Row>
         <DealerReportsDiv/>
       </Row>
       <Row>

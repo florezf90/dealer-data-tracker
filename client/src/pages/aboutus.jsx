@@ -66,7 +66,7 @@ const AboutUs = () => {
       icons: [
         { src: github, type: "socialmedia", url: "https://github.com/Jbradu2" },
         { src: mail, type: "mail", url: "Joshua.Ry.Bradshaw@gmail.com" },
-        { src: linkedin, type: "socialmedia", url: "https://www.linkedin.com" },
+        { src: linkedin, type: "socialmedia", url: "https://www.linkedin.com/in/joshua-r-bradshaw" },
       ],
     },
   ];
