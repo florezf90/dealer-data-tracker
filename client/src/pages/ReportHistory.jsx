@@ -1,79 +1,131 @@
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_DEALER } from "../utils/queries"; // Import the GraphQL query
-import AuthService from "../utils/auth";
-import Auth from "../utils/auth";
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_DEALERS_AND_REPORTS } from '../utils/queries'; // Import the GraphQL query
+import AuthService from '../utils/auth';
+import Auth from '../utils/auth';
 import { useParams } from "react-router-dom";
+import { Accordion, Button, Badge, Dropdown, DropdownButton, OverlayTrigger, Tooltip, Container, Row, Col} from 'react-bootstrap';
 
 const ReportHistory = () => {
+  //brings in dealer id from url params
   const { dealerId } = useParams();
-  const { loading, error, data } = useQuery(GET_DEALER, {
-    variables: {
-      email: AuthService.getUserIdFromToken(),
-      _id: dealerId,
-    },
+  //querys for user object to get users dealer array
+  const { loading, error, data } = useQuery(GET_DEALERS_AND_REPORTS, {
+    variables: { email: AuthService.getUserIdFromToken() }
   });
-  console.log("query data: " + data);
-
-  console.log(data);
+  //diffrent displays for while loading and if theres an error
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+  //extracts and sorts data => gets current dealer to set for top of select and to view reports
+  const userData = data;
+  const dealers = userData.user.dealers;
+  const currentDealer = dealers.find((dealer)=>dealer._id==dealerId);
+  const otherDealers = dealers.filter((dealer)=> dealer._id !== dealerId);
+  console.log(currentDealer);
+  //logout functionality
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
-
+  //if not logged in or token is expired redirects to login
   if (!AuthService.loggedIn()) {
     window.location.assign("/login");
   }
-
-  // Check if data is undefined or dealers // reports array is empty
-  if (
-    !data ||
-    !data.dealer ||
-    !data.dealer.reports ||
-    data.dealer.reports.length === 0
-  ) {
-    return (
-      <div className="report-history">
-        <h2>Report History</h2>
-        <p>No reports available</p>
-        <Link to={"/add-report/" + dealerId}>
-          <button>Add Report</button>
-        </Link>
-      </div>
-    );
+  //creates new report button and tooltip on hover
+  const AddReportDiv=()=>{
+  return(
+    <OverlayTrigger
+      placement="top"
+      overlay={<Tooltip id="new-report-tooltip">Create New Report!</Tooltip>}
+    >
+      {({ ref, ...triggerHandler }) => (
+        <Button
+          as="a"
+          href={"/add-report/" + dealerId}
+          ref={ref}
+          variant="primary"
+          {...triggerHandler}
+          className="d-inline-flex align-items-center"
+        >
+        &#x1f5ce;+
+        </Button>
+      )}
+    </OverlayTrigger>
+  )}
+  //select to use to pick what employee to view uses map of dealers
+  const DealerSelectDiv=()=>{
+    return(
+      <div className="dealer-select-div">
+        <DropdownButton
+          id="dealers-dropdown"
+          title={currentDealer.lastName+", "+currentDealer.firstName}
+        >
+          <Dropdown.Item active>
+            {currentDealer.lastName+", "+currentDealer.firstName}
+          </Dropdown.Item>
+          {otherDealers.map((dealer, index)=>(
+            <Dropdown.Item href={'/report-history-prototype/'+dealer._id} key={index}>
+              {dealer.lastName+", "+dealer.firstName}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      </div>)
   }
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>;
-
-  return (
-    <div className="report-history">
-      <h2>Report History</h2>
-      <div className="history">
-        <ul>
-          {data.dealer.reports.map((report, index) => (
-            <li key={index}>
-              <p>
-                Report ID :{report._id}
-              </p>
-              <p> dealer name: {data.dealer.lastName + ", " + data.dealer.firstName + ": "}</p>
+  //renders list of reports if avalible
+  const DealerReportsDiv=()=>{
+    //if the dealer has no reports display no reports
+    if (!currentDealer.reports || currentDealer.reports.length === 0)
+    return(
+    <div>
+      <p>No reports available</p>
+    </div>
+    )
+    //if the dealer has reports display reports in accordion format
+    return(
+      <Accordion defaultActiveKey={['0']} alwaysOpen>
+        {currentDealer.reports.map((report, index) => (
+          <Accordion.Item eventKey={index} key={index}>
+            <Accordion.Header>{report.createdAt}</Accordion.Header>
+            <Accordion.Body>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
               <p>Promotion Taken: {report.promotionTaken + " "}</p>
               <p>Money Taken: {report.moneyTaken + " "}</p>
-              <p>Report Date: {report.createdAt}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Link to="/dashboard">
-        <button>Back to Dashboard</button>
-      </Link>
-      {Auth.loggedIn() && (
-        <button className="btn btn-lg btn-light m-2" onClick={logout}>
-          Logout
-        </button>
-      )}
-    </div>
+            </Accordion.Body>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    )
+  }
+  //final return putting it all together
+  return (
+    <Container fluid className="report-history">
+      <Row className=""><h1><Badge>Report History</Badge></h1></Row>
+      <Row>
+        <Col>
+          <DealerSelectDiv/>
+        </Col>
+        <Col>
+          <AddReportDiv/>
+        </Col>
+      </Row>
+      <Row>
+        <DealerReportsDiv/>
+      </Row>
+      <Row>
+        <Col>
+          <Link to="/dashboard">
+            <Button>Back to Dashboard</Button>
+          </Link>
+        </Col>
+        {Auth.loggedIn() && (
+          <Col>
+            <Button onClick={logout}>
+              Logout
+            </Button>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 };
 export default ReportHistory;
