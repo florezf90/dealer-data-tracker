@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   
 });
 
-console.log("EMAIL_ADDRESS:", process.env.EMAIL_ADDRESS);
-console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
+console.log(`please do not forget to create a .env file in the server folder with your email address and app password to get the contact us form working, get
+  your app password from https://support.google.com/mail/answer/185833?hl=en`);
 
 module.exports = transporter;

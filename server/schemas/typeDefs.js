@@ -44,7 +44,7 @@ user(email: String!): User
 dealer(_id: ID!): Dealer
 me: User
 dealers: [Dealer]
-# Add this line to define the dealers query
+lastReport(dealerId: ID!): Report
 }
 
 type Mutation {

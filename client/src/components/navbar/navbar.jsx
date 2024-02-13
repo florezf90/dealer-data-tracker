@@ -60,10 +60,11 @@ const MainNavbar = () => {
             <Nav.Link href="/about-us">About Us</Nav.Link>
           )}
           {location.pathname !== "/contact-us" && ( // Conditionally render "Contact Us" link
-            <Nav.Link href="/contact-us">Contact Us</Nav.Link>
+            <Nav.Link className="nav-link" href="/contact-us">Contact Us</Nav.Link>
           )}
         </Nav>
         <Nav className={isSmallScreen ? "hidden" : "justify-content-between "}>
+          {isLoggedIn && <Nav.Link href="/dashboard">Dashboard</Nav.Link>}
           {isLoggedIn && <Nav.Link onClick={Auth.logout}>Log Out</Nav.Link>}
           {!isLoggedIn && <Nav.Link href="/signup">Sign Up</Nav.Link>}
           {!isLoggedIn && <Nav.Link href="/login">Log In</Nav.Link>}
