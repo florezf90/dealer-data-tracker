@@ -59,15 +59,29 @@ if (!data || !data.user || !data.user.dealers || data.user.dealers.length === 0)
 
 return (
 <div className="dashboard">
-  <h2>Dealer Performance Dashboard</h2>
+  <div className="text-center my-5">
+    <div className="row">
+      <div className="col-6 offset-3">
+        <h2 style={{ backgroundColor: 'white', padding: '10px', color: 'black'}}>Dealer Performance Dashboard</h2>
+                <Link to="/add-dealer">
+          <Button variant="primary" className="m-2">Add Dealer</Button>
+        </Link>
+        {Auth.loggedIn() && (
+          <Button variant="light" className="m-2" onClick={logout}>
+            Logout
+          </Button>
+        )}
+      </div>
+    </div>
+  </div>
   <div className="dealer-performance-list my-5">
     {data.user.dealers.map(dealer => (
       <Card key={dealer._id} className="mx-auto my-3 p-3" style={{ width: '50%' }}>
         <Card.Body>
-          <Card.Title>{dealer.firstName} {dealer.lastName}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{dealer.email}</Card.Subtitle>
-          <Card.Text>
-            Created: {dealer.createdAt}
+          <Card.Title className='m-2 mx-4'>{dealer.firstName} {dealer.lastName}</Card.Title>
+          <Card.Subtitle className="mx-4 my-3 text-muted">{dealer.email}</Card.Subtitle>
+          <Card.Text className="mx-4 ">
+            hired on: {dealer.createdAt}
           </Card.Text>
           <div className="mb-2 mx-3">
             <Button variant="danger" className="my-4 mx-2" onClick={() => handleDelete(dealer._id)}>Delete</Button>
@@ -78,14 +92,6 @@ return (
       </Card>
     ))}
   </div>
-  <Link to="/add-dealer">
-    <Button variant="primary" className="m-2">Add Dealer</Button>
-  </Link>
-  {Auth.loggedIn() && (
-    <Button variant="light" className="m-2" onClick={logout}>
-      Logout
-    </Button>
-  )}
 </div>
 );
 };
