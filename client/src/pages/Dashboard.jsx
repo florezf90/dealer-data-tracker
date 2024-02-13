@@ -66,8 +66,8 @@ return (
               <p>Name: {dealer.firstName + " "} {dealer.lastName + " "}</p>
               <p>Email: {dealer.email + " "} </p>
               <p>Created: {dealer.createdAt + " "}</p>
-              <p>actions: </p><button onClick={() => handleDelete(dealer._id)}> delete </button>
-              <Link to={"/report-history/"+dealer._id}><button>view Reports</button></Link>
+              <p>Actions: </p><button onClick={() => handleDelete(dealer._id)}> DELETE </button>
+              <Link to={"/report-history/"+dealer._id}><button>View Reports</button></Link>
               <Link to={"/add-report/"+dealer._id}><button>New Report</button></Link>
             </li>
           ))}
