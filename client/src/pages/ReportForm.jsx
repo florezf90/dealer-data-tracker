@@ -150,14 +150,14 @@ function ReportForm() {
                 <p className="text-center" style={{ marginTop: "100px" }}><h1>No data available yet</h1></p>
               )}
               {data && data.lastReport && data.dealer && (
-                <div>
+                <div className="text-center mt-5" >
                   <p>
-                    Dealer: {data.dealer.firstName} {data.dealer.lastName}
+                    <h3>Dealer:</h3> {data.dealer.firstName} {data.dealer.lastName}
                   </p>
-                  <p>Hands Dealt: {data.lastReport.handsDealt}</p>
-                  <p>Promotion Taken: {data.lastReport.promotionTaken}</p>
-                  <p>Money Taken: {data.lastReport.moneyTaken}</p>
-                  <p>Created At: {data.lastReport.createdAt}</p>
+                  <p><h3>Hands Dealt:</h3> {data.lastReport.handsDealt}</p>
+                  <p><h3>Promotion Taken:</h3> {data.lastReport.promotionTaken}</p>
+                  <p><h3>Money Taken: </h3>{data.lastReport.moneyTaken}</p>
+                  <p><h3>Created At:</h3> {data.lastReport.createdAt}</p>
                   {/* Render other fields of the last report */}
                 </div>
               )}
