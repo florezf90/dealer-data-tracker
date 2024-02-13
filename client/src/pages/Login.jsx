@@ -37,16 +37,16 @@ const Login = (props) => {
 
   return (
     <main className="login">
-      <MainNavbar />
-<Row style={{ height: '70vh' }}>
+      <MainNavbar/>
+      <Row style={{ height: '70vh' }}>
         <Col md={6} className="login-left d-flex align-items-center justify-content-center">
           <div className="welcome-back-text" style={{ fontSize: '3rem' }}>Welcome back!</div>
         </Col>
         <Col md={6} className="login-right d-flex align-items-center justify-content-center" >
           <Card className="w-50">
-            <Card.Body>
-              <h1>Login</h1>
-              <div className="form-div d-flex flex-column align-items-center">
+            <Card.Body className="d-flex flex-column align-items-center">
+              <h1 className="text-center">Login</h1>
+              <div className="form-div d-flex flex-column align-items-center w-100">
                 {data ? (
                   <p>
                     Success! You may now head <Link to="/">back to the homepage.</Link>
@@ -71,12 +71,20 @@ const Login = (props) => {
                         onChange={handleChange}
                       />
                     </Form.Group>
-                    <Button variant="primary" type="submit" className='w-50 ml-5'>
-                      Submit
-                    </Button>
+                    <Form.Group className="d-flex justify-content-center w-100 mb-4">
+                      <Button variant="primary" type="submit">
+                        Submit
+                      </Button>
+                    </Form.Group>
                   </Form>
                 )}
                 {error && <Alert variant="danger">{error.message}</Alert>}
+              </div>
+              <div className="text-center">
+                Do not have an account?{' '}
+                <Link to="/signup">
+                  Sign up
+                </Link>
               </div>
             </Card.Body>
           </Card>
