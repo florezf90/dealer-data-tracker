@@ -14,14 +14,14 @@ import TeamPresentation from "../components/team-presentation/teamcards";
 const AboutUs = () => {
   const projectinfo =
     "If you would like to know more about the technical details of the project, please click the icon.";
-  const aboutustitle = "Main mision";
-  const paragraphintro = "description of what we aim to by creating this app";
+  const aboutustitle = "Main Mission";
+  const paragraphintro = "Creating tools that solve real world problems!";
   const numRows = 1;
   const rowContents = [
     {
       title: "Our Story",
-      paragraph: `main reason why we decided to make this project and did we came with it, we can also
-      explain why we chose to do talk about why we decided doing coding.`,
+      paragraph: `Using the MERN stack and all of the coding knowlede we have gained thus far,
+      we wanted to creat a functional and realistic auditing application that would be useful to any employer.`,
       imgSrc: team,
     },
   ];
