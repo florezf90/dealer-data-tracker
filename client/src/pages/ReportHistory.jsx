@@ -113,7 +113,7 @@ const ReportHistory = () => {
             <Accordion.Body>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
               <p>Promotion Taken: {report.promotionTaken + " "}</p>
-              <p>Money Taken: {report.moneyTaken + " "}</p>
+              <p>Errors Made: {report.moneyTaken + " "}</p>
             </Accordion.Body>
           </Accordion.Item>
         ))}
@@ -137,7 +137,7 @@ const ReportHistory = () => {
           <h2>Average Report Categories</h2>
           <p>Hands Dealt Average: {averages.handsDealtAvg.toFixed(2)}</p>
           <p>Promotion Taken Average: {averages.promotionTakenAvg.toFixed(2)}</p>
-          <p>Money Taken Average: {averages.moneyTakenAvg.toFixed(2)}</p>
+          <p>Errors Made Average: {averages.moneyTakenAvg.toFixed(2)}</p>
         </Col>
         </Row>
         <Row>

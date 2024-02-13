@@ -56,10 +56,10 @@ const ReportHistory = () => {
               <p>
                 Report ID :{report._id}
               </p>
-              <p> dealer name: {data.dealer.lastName + ", " + data.dealer.firstName + ": "}</p>
+              <p> Dealer Name: {data.dealer.lastName + ", " + data.dealer.firstName + ": "}</p>
               <p>Hands Dealt: {report.handsDealt + " "}</p>
-              <p>Promotion Taken: {report.promotionTaken + " "}</p>
-              <p>Money Taken: {report.moneyTaken + " "}</p>
+              <p>Promotion Money Taken: {report.promotionTaken + " "}</p>
+              <p>Errors Made: {report.moneyTaken + " "}</p>
               <p>Report Date: {report.createdAt}</p>
             </li>
           ))}
