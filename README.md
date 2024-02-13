@@ -1,17 +1,9 @@
 # dealer-data-tracker
 
 ## Description
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+    We embarked on this project to be able to track a subject that any workplace likes to keep track of, Metrics! This specific app was built with a pokerhouse in mind. Created to allow supervisors to keep records when they audit their dealers metrics and store them to track a dealers preformance is over time. 
 
 ## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -20,46 +12,46 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+If you are setting up this program for development the steps to take to get in installed and running are... 
+1. clone this repo
+2. open the file in command line and run 'npm install' to install dependancys
+3. use 'npm run build' then 'npm run start' to build the file and start server (alternatively you can also use 'npm run develop')
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+to use this app is simple just navigate to our website at https://dealer-data-tracker.onrender.com/ , then create a account by clicking in the upper left corner on sign up. After you create the account you gain access to your dashboard and all its cool features. From the dashboard you can;
+- View your dealers
+- Add a dealer
+- add a report for a dealer
+- delete a dealer
+- go to report history
+and from report history they can then;
+- View previous reports
+- View average of dealer metrics across all reported reports
+- Add a new report
+- Change what dealer you are viewing
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+![homepage](assets/images/screenshot.png)
+![dashboard](assets/images/screenshot.png)
+![reporthistory](assets/images/screenshot.png)
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+This app was created by:
+Joshua Bradshaw, https://github.com/Jbradu2 ,
+Luis Flores, https://github.com/florezf90 ,
+Noah Lara, https://github.com/N-lara ,
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+we also owe credit to the creaters of Express, Apollo, GraphQL, MongoDb, Mongoose, JWT, JWT-decode, Bcrypt, Nodemailer, Vite, Bootstrap, React, React-Bootstrap, React-Router-Dom, and FontAwesome for their great npm packages.
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
+🏆MIT License
 
 ## How to Contribute
 
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+If you are feeling inclined to contribure feel free to contact us on our githubs or something I believe in you.
 
-## Tests
+## Future
 
-Go the extra mile and write tests for your app
+In the future there would be some great additions we would like to make such as, adding the ability to edit your account email or password, also password resetting, and deleting reports, and using PWA to make it avalible offline
