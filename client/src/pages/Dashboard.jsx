@@ -5,7 +5,7 @@ import { GET_DEALERS } from '../utils/queries'; // Import the GraphQL query
 import { REMOVE_DEALER } from '../utils/mutations';
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
-
+import './dashboard.css';
 
 
 const Dashboard = () => {
