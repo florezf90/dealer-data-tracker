@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
@@ -11,7 +12,9 @@ import './dashboard.css';
 
 const Dashboard = () => {
   // State to store dealer performance data
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredDealers, setFilteredDealers] = useState([]);
+  
   const [removeDealer] = useMutation(REMOVE_DEALER);
 
 
@@ -56,6 +59,20 @@ if (!data || !data.user || !data.user.dealers || data.user.dealers.length === 0)
 
     if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
+ 
+  const filterDealers = (query) => {
+    if (!query) {
+      setFilteredDealers(data.user.dealers);
+      return;
+    }
+
+    const filtered = data.user.dealers.filter((dealer) => {
+      const fullName = `${dealer.firstName} ${dealer.lastName}`;
+      return fullName.toLowerCase().includes(query.toLowerCase());
+    });
+
+    setFilteredDealers(filtered);
+  };
 
 return (
 <div className="dashboard">
@@ -74,8 +91,20 @@ return (
       </div>
     </div>
   </div>
-  <div className="dealer-performance-list my-5">
-    {data.user.dealers.map(dealer => (
+  <div className="search-bar-container">
+      <input
+        type="text"
+        placeholder="Search by name"
+        value={searchQuery}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+          filterDealers(e.target.value);
+        }}
+        className="form-control mb-4"
+      />
+      </div>
+    <div className="dealer-performance-list my-5" style={{ width: '50%', margin: 'auto' }}>
+        {filteredDealers.map((dealer) => (
       <Card key={dealer._id} className="mx-auto my-3 p-3" style={{ width: '50%' }}>
         <Card.Body>
           <Card.Title className='m-2 mx-4'>{dealer.firstName} {dealer.lastName}</Card.Title>
@@ -95,4 +124,5 @@ return (
 </div>
 );
 };
+
 export default Dashboard;
