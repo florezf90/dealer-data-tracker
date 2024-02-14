@@ -58,3 +58,21 @@ body {
   background-color: #c40000; /* Darker red on hover */
   
 }
+
+.search-bar-container {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.form-control {
+  width: 80%; /* Adjust the width of the search input */
+  margin: 0 auto; /* Center the search input */
+}
+
+/* Adjust the styles for the dealer list */
+.dealer-performance-list {
+  margin-bottom: 20px;
+  width: 50%; /* Adjust the width of the dealer list */
+  margin: auto; /* Center the dealer list */
+}
