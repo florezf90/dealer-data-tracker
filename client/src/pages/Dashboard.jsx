@@ -2,17 +2,40 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { GET_DEALERS } from "../utils/queries"; // Import the GraphQL query
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import { REMOVE_DEALER } from "../utils/mutations";
 import AuthService from "../utils/auth";
 import Auth from "../utils/auth";
 import "./dashboard.css";
+import { useState } from "react";
 
 const Dashboard = () => {
   // State to store dealer performance data
 
   const [removeDealer] = useMutation(REMOVE_DEALER);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [dealerIdToDelete, setDealerIdToDelete] = useState(null);
 
+ const handleShowDeleteModal = (dealerId) => {
+    setDealerIdToDelete(dealerId);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      await removeDealer({
+        variables: { _id: dealerIdToDelete },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+    setShowDeleteModal(false);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+  };
   const { loading, error, data } = useQuery(GET_DEALERS, {
     variables: { email: AuthService.getUserIdFromToken() },
   });
@@ -22,16 +45,6 @@ const Dashboard = () => {
     Auth.logout();
   };
 
-  const handleDelete = async (dealerId) => {
-    try {
-      await removeDealer({
-        variables: { _id: dealerId },
-      });
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   if (!AuthService.loggedIn()) {
     window.location.assign("/login");
@@ -124,17 +137,17 @@ const Dashboard = () => {
                 <Button
                   variant="danger"
                   className="my-4 mx-2"
-                  onClick={() => handleDelete(dealer._id)}
+                  onClick={() => handleShowDeleteModal(dealer._id)}
                 >
-                  Delete
+                  fire his ass!
                 </Button>
                 <Link to={"/report-history/" + dealer._id}>
-                  <Button variant="primary" className="mr-2 mx-2">
+                  <Button variant="dark" className="mr-2 mx-2">
                     View Reports
                   </Button>
                 </Link>
                 <Link to={"/add-report/" + dealer._id}>
-                  <Button variant="primary" className="mr-2 mx-2">
+                  <Button variant="primary" className="mr-2 mx-2 my-3">
                     New Report
                   </Button>
                 </Link>
@@ -143,6 +156,20 @@ const Dashboard = () => {
           </Card>
         ))}
       </div>
+       <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
+      <Modal.Header closeButton>
+        <Modal.Title style={{ color: "black" }}>wait....!!</Modal.Title>
+      </Modal.Header>
+      <Modal.Body style={{ color: "black" }}>Are you sure you want to delete this dealer?</Modal.Body>
+      <Modal.Footer>
+        <Button variant="dark" onClick={handleCloseDeleteModal}>
+          Close
+        </Button>
+        <Button variant="danger" onClick={handleConfirmDelete}>
+          Confirm
+        </Button>
+      </Modal.Footer>
+    </Modal>
     </div>
   );
 };
