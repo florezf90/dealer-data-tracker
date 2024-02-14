@@ -29,8 +29,8 @@ const TwoColumnHero = ({ rowContents }) => {
           )}
           <Col className="d-flex align-items-center justify-content-center">
             <div className="left-content text-center mt-5 pt-5">
-              <h1 className="title">{title}</h1>
-              <p className="paragraph text-center " style={{ maxWidth: "700px" }}>
+              <h1 className="title" style={{textShadow: '3px 3px 8px rgba(0, 0, 0, 0.9)'}}>{title}</h1>
+              <p className="paragraph text-center " style={{ maxWidth: "700px", textShadow: '2px 2px 1px rgba(0, 0, 0, 4)' }}>
                 {paragraph}
               </p>
             </div>

@@ -43,7 +43,7 @@ sendEmail({variables: {input: formData}})
 
 
  return (
-    <Form className="mx-auto" style={{ maxWidth: "400px", margin: "0 auto" }}>
+    <Form className="mx-auto, my-5" style={{ maxWidth: "400px", margin: "0 auto", backgroundColor: "white", padding: "20px", borderRadius: "10px,", color: "black"}}>
       <Form.Group controlId="fullname">
         <Form.Label> Name</Form.Label>
         <Form.Control type="text" onChange={(e) => setfullname(e.target.value)} placeholder="John Smith"/>

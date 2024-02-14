@@ -80,7 +80,7 @@ const ReportHistory = () => {
             as="a"
             href={"/add-report/" + dealerId}
             ref={ref}
-            variant="primary"
+            variant="danger"
             {...triggerHandler}
             className="d-inline-flex align-items-center my-5"
           >
@@ -97,6 +97,7 @@ const ReportHistory = () => {
         <DropdownButton
           id="dealers-dropdown"
           title={currentDealer.lastName + ", " + currentDealer.firstName}
+          variant="primary"
         >
           <Dropdown.Item active>
             {currentDealer.lastName + ", " + currentDealer.firstName}
@@ -143,8 +144,8 @@ const ReportHistory = () => {
           {/* Left container */}
           <Card className="w-75 my-4 d-flex justify-content-center">
             <Card.Body>
-              <h1 className="text-center my-3">
-                <Badge>Dealer summary</Badge>
+              <h1 className="text-center my-3" >
+                <Badge  >Dealer summary</Badge>
               </h1>
               <div className="d-flex justify-content-center mt-5">
                 <DealerSelectDiv />
@@ -167,10 +168,10 @@ const ReportHistory = () => {
               <Row>
                 <Col className="d-flex justify-content-center mb-4">
                   <Link to="/dashboard">
-                    <Button className="mx-3">Back to Dashboard</Button>
+                    <Button className="mx-3" variant="dark">Back to Dashboard</Button>
                   </Link>
 
-                  {Auth.loggedIn() && <Button onClick={logout}>Logout</Button>}
+                  {Auth.loggedIn() && <Button onClick={logout} variant="danger">Logout</Button>}
                 </Col>
               </Row>
             </Card.Body>
@@ -185,8 +186,8 @@ const ReportHistory = () => {
               </h1>
               <div className="d-flex justify-content-center">
                 <AddReportDiv />
-                <OverlayTrigger placement="top" overlay={<Tooltip> Having issues? Contact Us</Tooltip>}>
-                 <Button variant="primary" className="mx-3 my-5" as={Link} to="/contact-us">Get Help</Button>
+                <OverlayTrigger placement="top" overlay={<Tooltip > Having issues? Contact Us</Tooltip>}>
+                 <Button variant="dark" className="mx-3 my-5" as={Link} to="/contact-us">Get Help</Button>
                 </OverlayTrigger>
               </div>
               <DealerReportsDiv />
