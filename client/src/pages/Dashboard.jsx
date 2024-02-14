@@ -88,6 +88,8 @@ const Dashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
 
+  
+
   return (
     <div className="dashboard">
       <div className="text-center my-5">
@@ -101,7 +103,7 @@ const Dashboard = () => {
                 borderRadius: "8px",
               }}
             >
-              Dealer Performance Dashboard
+              Dealer  Dashboard
             </h2>
             <Link to="/add-dealer">
               <Button variant="primary" className="m-2">
