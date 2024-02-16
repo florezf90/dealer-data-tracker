@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
@@ -17,6 +18,7 @@ const Dashboard = () => {
   });
 
   if (!AuthService.loggedIn()) {
+
     window.location.assign('/login');
   }
 
@@ -70,6 +72,7 @@ const Dashboard = () => {
       <div className="text-center my-5">
         <div className="row">
           <div className="col-6 offset-3">
+
             <h2 style={{ backgroundColor: 'white', padding: '10px', color: 'black' }}>
               Dealer Performance Dashboard
             </h2>
@@ -98,6 +101,7 @@ const Dashboard = () => {
           className="form-control mb-4"
         />
       </div>
+
       <div className="dealer-performance-list my-5" style={{ width: '50%', margin: 'auto' }}>
         {filteredDealers.map((dealer) => (
           <Card key={dealer._id} className="mx-auto my-3 p-3" style={{ width: '100%' }}>
@@ -105,6 +109,7 @@ const Dashboard = () => {
               <Card.Title className="m-2 mx-4">
                 {dealer.firstName} {dealer.lastName}
               </Card.Title>
+
               <Card.Subtitle className="mx-4 my-3 text-muted">{dealer.email}</Card.Subtitle>
               <Card.Text className="mx-4 ">hired on: {dealer.createdAt}</Card.Text>
               <div className="mb-2 mx-3">

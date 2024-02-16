@@ -66,9 +66,10 @@ body {
 }
 
 .form-control {
-  width: 80%; /* Adjust the width of the search input */
+  width: 50%; /* Adjust the width of the search input */
   margin: 0 auto; /* Center the search input */
 }
+
 
 /* Adjust the styles for the dealer list */
 .dealer-performance-list {
