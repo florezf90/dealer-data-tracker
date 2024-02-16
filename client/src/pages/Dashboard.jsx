@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_DEALERS } from '../utils/queries';
 import { REMOVE_DEALER } from '../utils/mutations';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
 import AuthService from '../utils/auth';
 import Auth from '../utils/auth';
 import './dashboard.css';
@@ -16,6 +16,9 @@ const Dashboard = () => {
   const { loading, error, data } = useQuery(GET_DEALERS, {
     variables: { email: AuthService.getUserIdFromToken() },
   });
+  const [firemodal, setFireModal] = useState(false);
+  const handleClose = () => setFireModal(false);
+  const HandleFireModal = () => setFireModal(true);
 
   if (!AuthService.loggedIn()) {
 
@@ -113,9 +116,21 @@ const Dashboard = () => {
               <Card.Subtitle className="mx-4 my-3 text-muted">{dealer.email}</Card.Subtitle>
               <Card.Text className="mx-4 ">hired on: {dealer.createdAt}</Card.Text>
               <div className="mb-2 mx-3">
-                <Button variant="danger" className="my-4 mx-2" onClick={() => handleDelete(dealer._id)}>
+                <Button variant="danger" className="my-4 mx-2" onClick={HandleFireModal}>
                   Delete
                 </Button>
+                <Modal show={firemodal} onHide={handleClose} backdrop="static" keyboard={false}>
+                    <Modal.Header>
+                      <Modal.Title style={{ color: 'black' }}>Wait!!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body style={{ color: 'black' }}>
+                      Are you sure you want to fire this dealer?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="dark" onClick={handleClose}> Nevermind </Button>
+                      <Button variant="danger" onClick={() => handleDelete(dealer._id)}> Fire </Button>
+                    </Modal.Footer>
+                  </Modal>
                 <Link to={`/report-history/${dealer._id}`}>
                   <Button variant="primary" className="mr-2 mx-2">
                     View Reports
