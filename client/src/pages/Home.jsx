@@ -40,7 +40,7 @@ const Home = () => {
     <main>
       <MainNavbar />
       <div className="hero my-5 p-5">
-        <PresentationModel title={newtitle} paragraph={newparagraph} />
+        <PresentationModel title={newtitle} paragraph={newparagraph}  />
       </div>
       <div className="hero-container mt-5 p-5" id="features">
         <TitleAndParagraph

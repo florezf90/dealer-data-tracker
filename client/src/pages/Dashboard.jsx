@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
-import { GET_DEALERS } from "../utils/queries";
-import { REMOVE_DEALER } from "../utils/mutations";
-import { Card, Button } from "react-bootstrap";
-import AuthService from "../utils/auth";
-import Auth from "../utils/auth";
-import "./dashboard.css";
+
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_DEALERS } from '../utils/queries';
+import { REMOVE_DEALER } from '../utils/mutations';
+import { Card, Button } from 'react-bootstrap';
+import AuthService from '../utils/auth';
+import Auth from '../utils/auth';
+import './dashboard.css';
 
 const Dashboard = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [filteredDealers, setFilteredDealers] = useState([]);
   const [removeDealer] = useMutation(REMOVE_DEALER);
   const { loading, error, data } = useQuery(GET_DEALERS, {
@@ -17,7 +18,8 @@ const Dashboard = () => {
   });
 
   if (!AuthService.loggedIn()) {
-    window.location.assign("/login");
+
+    window.location.assign('/login');
   }
 
   const logout = (event) => {
@@ -36,12 +38,7 @@ const Dashboard = () => {
     }
   };
 
-  if (
-    !data ||
-    !data.user ||
-    !data.user.dealers ||
-    data.user.dealers.length === 0
-  ) {
+  if (!data || !data.user || !data.user.dealers || data.user.dealers.length === 0) {
     return (
       <div className="dashboard">
         <h2>Dealer Performance Dashboard</h2>
@@ -75,13 +72,8 @@ const Dashboard = () => {
       <div className="text-center my-5">
         <div className="row">
           <div className="col-6 offset-3">
-            <h2
-              style={{
-                backgroundColor: "white",
-                padding: "10px",
-                color: "black",
-              }}
-            >
+
+            <h2 style={{ backgroundColor: 'white', padding: '10px', color: 'black' }}>
               Dealer Performance Dashboard
             </h2>
             <Link to="/add-dealer">
@@ -109,32 +101,19 @@ const Dashboard = () => {
           className="form-control mb-4"
         />
       </div>
-      <div
-        className="dealer-performance-list my-5"
-        style={{ width: "50%", margin: "auto" }}
-      >
+
+      <div className="dealer-performance-list my-5" style={{ width: '50%', margin: 'auto' }}>
         {filteredDealers.map((dealer) => (
-          <Card
-            key={dealer._id}
-            className="mx-auto my-3 p-3"
-            style={{ width: "100%" }}
-          >
+          <Card key={dealer._id} className="mx-auto my-3 p-3" style={{ width: '100%' }}>
             <Card.Body>
               <Card.Title className="m-2 mx-4">
                 {dealer.firstName} {dealer.lastName}
               </Card.Title>
-              <Card.Subtitle className="mx-4 my-3 text-muted">
-                {dealer.email}
-              </Card.Subtitle>
-              <Card.Text className="mx-4 ">
-                hired on: {dealer.createdAt}
-              </Card.Text>
+
+              <Card.Subtitle className="mx-4 my-3 text-muted">{dealer.email}</Card.Subtitle>
+              <Card.Text className="mx-4 ">hired on: {dealer.createdAt}</Card.Text>
               <div className="mb-2 mx-3">
-                <Button
-                  variant="danger"
-                  className="my-4 mx-2"
-                  onClick={() => handleDelete(dealer._id)}
-                >
+                <Button variant="danger" className="my-4 mx-2" onClick={() => handleDelete(dealer._id)}>
                   Delete
                 </Button>
                 <Link to={`/report-history/${dealer._id}`}>

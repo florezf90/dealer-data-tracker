@@ -58,7 +58,7 @@ body {
   background-color: #c40000; /* Darker red on hover */
   
 }
-/*search bar styling */
+
 .search-bar-container {
   width: 50%;
   margin: auto;
@@ -71,8 +71,9 @@ body {
 }
 
 
+/* Adjust the styles for the dealer list */
 .dealer-performance-list {
   margin-bottom: 20px;
-  width: 50%; 
-  margin: auto; 
+  width: 50%; /* Adjust the width of the dealer list */
+  margin: auto; /* Center the dealer list */
 }

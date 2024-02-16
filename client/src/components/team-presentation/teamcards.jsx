@@ -15,7 +15,7 @@ const TeamPresentation = ({ cardData }) => {
      <Container className="my-5">
       <Row className="text-center mt-5">
         <Col>
-          <h1 className="display-1" style={{ marginTop: "150px" }}>
+          <h1 className="display-1" style={{ marginTop: "150px", textShadow: '2px 2px 5px rgba(0, 0, 0, 6)' }}>
             The developer Team
           </h1>
         </Col>
