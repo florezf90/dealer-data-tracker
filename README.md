@@ -31,9 +31,9 @@ and from report history they can then;
 - Add a new report
 - Change what dealer you are viewing
 
-![homepage](assets/images/screenshot.png)
-![dashboard](assets/images/screenshot.png)
-![reporthistory](assets/images/screenshot.png)
+![homepage](./client/src/assets/screenshotHome.png)
+![dashboard](./client/src/assets/screenshotDashboard.png)
+![reporthistory](./client/src/assets/screenshotReportHistory.png)
 
 ## Credits
 
