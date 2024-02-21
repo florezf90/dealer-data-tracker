@@ -1,0 +1,24 @@
+.githubimg {
+    max-width: 400px;
+    margin-bottom: 210px;
+    margin-right: 10px;
+}
+
+
+
+
+@media screen and (max-width: 414px) {
+    .misionimg {
+            max-width: 280px;
+    margin-bottom: 210px;
+    }
+}
+
+@media screen and (min-width: 415px) {
+    .misionimg {
+            max-width: 400px;
+    margin-bottom: 210px;
+    }
+    
+}
+
