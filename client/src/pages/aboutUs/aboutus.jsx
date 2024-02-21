@@ -1,15 +1,16 @@
-import MainNavbar from "../components/navbar/navbar";
-import Footer from "../components/footer/footer";
-import TitleAndParagraph from "../components/title/titleAndParagraph";
+import MainNavbar from "../../components/navbar/navbar";
+import Footer from "../../components/footer/footer";
+import TitleAndParagraph from "../../components/title/titleAndParagraph";
 import { Image, Container } from "react-bootstrap";
-import mision from "../assets/20943958.jpg";
-import projectcode from "../assets/projectsrc.png";
-import team from "../assets/team.png";
-import github from "../assets/github.png";
-import mail from "../assets/mail.png";
-import linkedin from "../assets/linkedin.png";
-import TwoColumnHero from "../components/feature-cards/featurecards";
-import TeamPresentation from "../components/team-presentation/teamcards";
+import mision from "../../assets/20943958.jpg";
+import projectcode from "../../assets/projectsrc.png";
+import team from "../../assets/team.png";
+import github from "../../assets/github.png";
+import mail from "../../assets/mail.png";
+import linkedin from "../../assets/linkedin.png";
+import TwoColumnHero from "../../components/feature-cards/featurecards";
+import TeamPresentation from "../../components/team-presentation/teamcards";
+import  "./index.css";
 
 const AboutUs = () => {
   const projectinfo =
@@ -79,20 +80,22 @@ const AboutUs = () => {
         <Image
           src={mision}
           alt="mision"
+          className="misionimg"
           fluid
-          style={{ maxWidth: "600px", marginBottom: "210px" }}
         />
       </Container>
-      <TwoColumnHero numRows={numRows} rowContents={rowContents} />
-      <TeamPresentation cardData={cardData} />
+      <Container className="saes">
+      <TwoColumnHero  numRows={numRows} rowContents={rowContents}/>
+      </Container>
+            <TeamPresentation cardData={cardData} />
       <TitleAndParagraph title="Project Code" paragraph={projectinfo} />
       <Container className="d-flex align-items-center justify-content-center">
         <a href="https://github.com/florezf90/dealer-data-tracker">
           <Image
             src={projectcode}
             alt="reference"
+            className="githubimg"
             fluid
-            style={{ maxWidth: "600px", marginBottom: "210px" }}
           />
         </a>
       </Container>

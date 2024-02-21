@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import './index.css'
 
 import App from './App.jsx'
-import AboutUs from './pages/aboutus.jsx';
-import ContactUs from './pages/contactus.jsx'
+import AboutUs from './pages/aboutUs/aboutus.jsx';
+import ContactUs from './pages/contact-us/contactus.jsx'
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Error from './pages/Error';
-import Dashboard from './pages/Dashboard.jsx';
+import Dashboard from './pages/dashboard/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
 import ReportForm from './pages/ReportForm.jsx';
 import ReportHistory from './pages/ReportHistory.jsx';

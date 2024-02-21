@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_DEALERS } from "../utils/queries";
-import { REMOVE_DEALER } from "../utils/mutations";
+import { GET_DEALERS } from "../../utils/queries";
+import { REMOVE_DEALER } from "../../utils/mutations";
 import { Card, Button, Modal } from "react-bootstrap";
-import AuthService from "../utils/auth";
-import Auth from "../utils/auth";
+import AuthService from "../../utils/auth";
+import Auth from "../../utils/auth";
 import "./dashboard.css";
 
 const Dashboard = () => {

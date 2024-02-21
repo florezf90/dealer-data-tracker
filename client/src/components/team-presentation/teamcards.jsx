@@ -12,7 +12,7 @@ const TeamPresentation = ({ cardData }) => {
     }
 
   return (
-     <Container className="my-5">
+     <Container className="my-5 ">
       <Row className="text-center mt-5">
         <Col>
           <h1 className="display-1" style={{ marginTop: "150px", textShadow: '2px 2px 5px rgba(0, 0, 0, 6)' }}>
@@ -20,7 +20,7 @@ const TeamPresentation = ({ cardData }) => {
           </h1>
         </Col>
       </Row>
-      <Row className="justify-content-around mt-5">
+      <Row className="justify-content-around mt-5 mx-auto">
         {cardData.map((data, index) => (
           <Col key={index} md={3}>
             <Card className="text-center my-5">
@@ -34,7 +34,7 @@ const TeamPresentation = ({ cardData }) => {
                     <ListGroup.Item key={itemIndex}>{item}</ListGroup.Item>
                   ))}
                 </ListGroup>
-                <Row className="justify-content-around mt-3">
+                <Row className="justify-content-around mt-3 ">
                   {data.icons.map((icon, iconIndex) => (
                     <Col key={iconIndex} onClick={() => {
                         if (icon.type === "socialmedia" ) {
