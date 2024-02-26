@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import Auth from '../../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
 import {Form, Button, Card, Row, Col} from 'react-bootstrap';
-import MainNavbar from '../components/navbar/navbar';
+import MainNavbar from '../../components/navbar/navbar';
+import './index.css'
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '' });
   const [addUser] = useMutation(ADD_USER);
@@ -36,12 +37,12 @@ function Signup() {
       <MainNavbar />
       <Row style={{ height: '70vh' }}>
         <Col md={6} className="signup-left d-flex align-items-center justify-content-center">
-          <Card className="w-50">
-            <Card.Body className="d-flex flex-column align-items-center">
+          <Card className="formCard">
+            <Card.Body className="d-flex flex-column align-items-center py-5 ">
               <h1 className="text-center">Signup</h1>
               <div className="form-div d-flex flex-column align-items-center w-100">
-                <Form onSubmit={handleFormSubmit} className="w-100">
-                  <Form.Group controlId="formBasicFirstName" className='my-2'>
+                <Form onSubmit={handleFormSubmit} className="w-100 py-5">
+                  <Form.Group controlId="formBasicFirstName" className='my-2 pb-3'>
                     <Form.Control
                       type="text"
                       placeholder="First Name"
@@ -51,7 +52,7 @@ function Signup() {
                       required
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicLastName" className='my-2'>
+                  <Form.Group controlId="formBasicLastName" className='my-2 pb-3'>
                     <Form.Control
                       type="text"
                       placeholder="Last Name"
@@ -61,7 +62,7 @@ function Signup() {
                       required
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail" className='my-2'>
+                  <Form.Group controlId="formBasicEmail" className='my-2 pb-3'>
                     <Form.Control
                       type="email"
                       placeholder="Your email"
@@ -71,7 +72,7 @@ function Signup() {
                       required
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicPassword" className='my-2'>
+                  <Form.Group controlId="formBasicPassword" className='my-2 pb-3'>
                     <Form.Control
                       type="password"
                       placeholder="Password"
@@ -98,7 +99,7 @@ function Signup() {
           </Card>
         </Col>
         <Col md={6} className="signup-right d-flex align-items-center justify-content-center">
-          <div className="placeholder-text">
+          <div className="placeholder-text text-center">
             <h2>Join our community</h2>
             <p>Get access to exclusive features by signing up.</p>
           </div>

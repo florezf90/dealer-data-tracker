@@ -53,12 +53,29 @@ const Dashboard = () => {
     data.user.dealers.length === 0
   ) {
     return (
-      <div className="dashboard">
-        <h2>Dealer Performance Dashboard</h2>
-        <p>No dealers available</p>
-        <Link to="/add-dealer">
-          <button>Add Dealer</button>
-        </Link>
+      <div className="dashboardCard my-5  ">
+        <Card className=" my-3 p-3 " >
+          <Card.Body>
+            <Card.Title className="m-2 mx-4">
+              {" "}
+              <h2>Dealer  Dashboard </h2>
+            </Card.Title>
+            <p className="mx-4 my-5">
+              {" "}
+              <h5>No hired dealers yet</h5>
+            </p>
+            <Link to="/add-dealer">
+              <Button variant="primary" className="m-2">
+                Add Dealer
+              </Button>
+            </Link>
+            {Auth.loggedIn() && (
+              <Button variant="danger" className="m-2 center" onClick={logout}>
+                Logout
+              </Button>
+            )}
+          </Card.Body>
+        </Card>
       </div>
     );
   }
@@ -95,12 +112,12 @@ const Dashboard = () => {
               Dealer  Dashboard
             </h2>
             <Link to="/add-dealer">
-              <Button variant="primary" className="m-2">
+              <Button variant="primary" className="m-2 mt-4">
                 Add Dealer
               </Button>
             </Link>
             {Auth.loggedIn() && (
-              <Button variant="light" className="m-2" onClick={logout}>
+              <Button  className="m-2 mt-4" variant="danger" onClick={logout}>
                 Logout
               </Button>
             )}
@@ -122,7 +139,7 @@ const Dashboard = () => {
 
       <div
         className="dealer-performance-list my-5"
-        style={{ width: "50%", margin: "auto" }}
+        style={{ width: "65%", margin: "auto" }}
       >
         {filteredDealers.map((dealer) => (
           <Card
@@ -135,13 +152,13 @@ const Dashboard = () => {
                 {dealer.firstName} {dealer.lastName}
               </Card.Title>
 
-              <Card.Subtitle className="mx-4 my-3 text-muted">
-                {dealer.email}
+              <Card.Subtitle className="mx-4 mt-5 ">
+                <h5>Email:</h5>{dealer.email}
               </Card.Subtitle>
-              <Card.Text className="mx-4 ">
-                hired on: {dealer.createdAt}
+              <Card.Text className="mx-4 mt-5">
+                <h5>Date Hired:</h5> {dealer.createdAt}
               </Card.Text>
-              <div className="mb-2 mx-3">
+              <div className="mb-2 mx-3 btnsContainer">
                 <Button
                   variant="danger"
                   className="my-4 mx-2"
@@ -176,7 +193,7 @@ const Dashboard = () => {
                   </Modal.Footer>
                 </Modal>
                 <Link to={`/report-history/${dealer._id}`}>
-                  <Button variant="primary" className="mr-2 mx-2 my-4">
+                  <Button variant="dark" className="mr-2 mx-2 my-4">
                     View Reports
                   </Button>
                 </Link>

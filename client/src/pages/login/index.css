@@ -1,0 +1,19 @@
+.loginCard {
+    width: 50%;
+}
+
+.welcome-back-text {
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 550px) {
+.loginCard {
+    width: 70%;
+}
+}
+    
+@media screen and (max-width: 416px)  {
+   .welcome-back-text {
+    font-size: 2.5rem;
+   }    
+}

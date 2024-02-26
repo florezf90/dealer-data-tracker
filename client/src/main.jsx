@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App.jsx'
 import AboutUs from './pages/aboutUs/aboutus.jsx';
 import ContactUs from './pages/contact-us/contactus.jsx'
-import Signup from './pages/Signup';
+import Signup from './pages/signup/Signup.jsx';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/login/Login.jsx';
 import Error from './pages/Error';
 import Dashboard from './pages/dashboard/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
