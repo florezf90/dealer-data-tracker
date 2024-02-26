@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_REPORT } from "../utils/mutations";
-import { GET_LAST_REPORT } from "../utils/queries";
-import AuthService from "../utils/auth";
+import { ADD_REPORT } from "../../utils/mutations";
+import { GET_LAST_REPORT } from "../../utils/queries";
+import AuthService from "../../utils/auth";
 import { useParams } from "react-router-dom";
+import './index.css'
 
 function ReportForm() {
   const { dealerId } = useParams();
@@ -120,7 +121,7 @@ function ReportForm() {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="flex-row flex-end">
+                <div className="flex-row flex-end formBtns">
                   <Button type="submit" variant="danger">
                     Submit
                   </Button>
@@ -150,7 +151,7 @@ function ReportForm() {
                 <p className="text-center" style={{ marginTop: "100px" }}><h1>No data available yet</h1></p>
               )}
               {data && data.lastReport && data.dealer && (
-                <div className="text-center mt-5" >
+                <div className="text-center mt-5 lastReportCard" >
                   <p>
                     <h3>Dealer:</h3> {data.dealer.firstName} {data.dealer.lastName}
                   </p>
