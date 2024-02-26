@@ -15,49 +15,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.dashboard {
-  padding: 20px;
+.dashboardCard {
+  width: 50%;
+  margin: auto;
 }
 
-.dashboard h2 {
-  font-size: 35px; /* Increase font size for the heading */
-  margin-bottom: 20px;
-}
 
-.dealer-performance-list {
-  margin-bottom: 20px;
-}
-
-.dealer-performance-list ul {
-  font-size: 18px; 
-  font-weight: bold; 
-  list-style: none;
-  padding: 0;
-}
-
-.dealer-performance-list li {
-  margin-bottom: 20px; /* Increase spacing between list items */
-}
-
-.dealer-performance-list li .dealer-name {
-  font-size: 25px; /* Increase font size for the dealer name */
-  font-weight: bold;
-  color: #ff3333; /* Red */
-}
-
-.dealer-performance-list li button {
-  background-color: #90373787; /* Red */
-  color:whitesmoke; 
-  border: 15px 10px;
-  padding: 15px 20px; /* Increase padding for the buttons */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dealer-performance-list li button:hover {
-  background-color: #c40000; /* Darker red on hover */
-  
-}
 
 .search-bar-container {
   width: 50%;
@@ -71,9 +34,24 @@ body {
 }
 
 
-/* Adjust the styles for the dealer list */
-.dealer-performance-list {
-  margin-bottom: 20px;
-  width: 50%; /* Adjust the width of the dealer list */
-  margin: auto; /* Center the dealer list */
+@media screen and (max-width: 750px) {
+  .dashboardCard {
+    width: 70%;
+    text-align: center;
+  }
+  
+    .btnsContainer  {
+    text-align: center;
+  }
+  
+  .dealer-performance-list {
+    text-align: center;
+  }
+
+  .search-bar-container {
+    width: 80%;
+  }
 }
+
+
+

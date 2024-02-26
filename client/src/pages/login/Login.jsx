@@ -2,10 +2,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { Form, Button, Alert, Row, Col, Card } from 'react-bootstrap';
-import MainNavbar from '../components/navbar/navbar';
+import MainNavbar from '../../components/navbar/navbar';
+import './index.css'
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -40,7 +41,7 @@ const Login = (props) => {
       <MainNavbar/>
       <Row style={{ height: '70vh' }}>
         <Col md={6} className="login-left d-flex align-items-center justify-content-center">
-          <Card className="w-50">
+          <Card  className="loginCard" >
             <Card.Body className="d-flex flex-column align-items-center">
               <h1 className="text-center">Login</h1>
               <div className="form-div d-flex flex-column align-items-center w-100">
@@ -53,7 +54,7 @@ const Login = (props) => {
                     <Form.Group controlId="formBasicEmail" className='my-4'>
                       <Form.Control
                         type="email"
-                        placeholder="Your email"
+                        placeholder="email"
                         name="email"
                         value={formState.email}
                         onChange={handleChange}
@@ -77,7 +78,7 @@ const Login = (props) => {
                 )}
                 {error && <Alert variant="danger">{error.message}</Alert>}
               </div>
-              <div className="text-center">
+              <div className="text-center py-3">
                 Do not have an account?{' '}
                 <Link to="/signup">
                   Sign up
@@ -87,7 +88,7 @@ const Login = (props) => {
           </Card>
         </Col>
         <Col md={6} className="login-right d-flex align-items-center justify-content-center" >
-          <div className="welcome-back-text" style={{ fontSize: '3rem' }}>Welcome back!</div>
+          <div className="welcome-back-text mx-auto" >Welcome back!</div>
 
         </Col>
       </Row>

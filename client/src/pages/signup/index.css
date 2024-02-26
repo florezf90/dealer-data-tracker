@@ -1,0 +1,10 @@
+.formCard {
+    width: 50%;
+}
+
+@media screen and (max-width: 550px) {
+    .formCard {
+        width: 80%;
+    }
+    
+}
