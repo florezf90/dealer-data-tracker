@@ -13,7 +13,7 @@ import Login from './pages/login/Login.jsx';
 import Error from './pages/Error';
 import Dashboard from './pages/dashboard/Dashboard.jsx';
 import DealerForm from './pages/DealerForm.jsx';
-import ReportForm from './pages/ReportForm.jsx';
+import ReportForm from './pages/addReport/ReportForm.jsx';
 import ReportHistory from './pages/ReportHistory.jsx';
 
 const router = createBrowserRouter([
